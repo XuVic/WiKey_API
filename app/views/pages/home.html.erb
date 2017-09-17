@@ -1,0 +1,32 @@
+<html>
+  <style>
+    div{
+      float: left;
+      width: 500px;
+      border: 2px black solid;
+    }
+    ul li{
+      list-style-type: none;
+    }
+  </style>
+  <head>
+    <title> ruby test_app </title>
+    <h1> This is a homepage. </h1>
+  </head>
+  <body>
+    <ul>
+      <li><%= image_tag 'spacebrother.jpg' %></li>
+      <il><%=link_to 'about', about_path %></il>
+      <li>
+        <div>
+      <p> This is left block.</p>
+    </div>
+    <div>
+      <p> This is right block.</p>
+    </div>
+      </li>  
+    </ul>
+    
+  </body>
+  
+</html>
