@@ -1,0 +1,17 @@
+<html>
+  <header>
+    
+  </header>
+  <body>
+    <ul>
+      <li>
+        <p>title:<%= @article.title %></p>
+      </li>
+      <li>
+        <p>description:<%=@article.decription %></p>
+      </li>
+    </ul>
+    <%= link_to "back to articles listing", articles_path %><br/>
+    <%= link_to "go to edit article" , edit_article_path(@article) %>
+  </body>
+</html>
