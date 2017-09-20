@@ -2,26 +2,9 @@
   
   <header>
     <h1>This is edit page.</h1>
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
   </header>
   <body>
-     <%= form_for @article do |f| %>
-     <p>
-       <%= f.label :title %> <br/>
-       <%= f.text_field :title %>
-     </p>
-     <p>
-       <%= f.label :description %> <br/>
-       <%= f.text_area :decription%>
-     </p>
-     <p>
-       <%= f.submit :send %>
-     </p>
-     <%end%>
+   <%= render 'form' %>
   </body>
   
 </html>
