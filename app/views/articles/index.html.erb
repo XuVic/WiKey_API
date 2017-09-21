@@ -1,27 +1,27 @@
 <html>
   <heder>
-    <%= link_to "New article", new_article_path %>
-    <h1>Listing all article!</h1>
+    <h1 align="center">Listing all article!</h1>
   </heder>
   <body>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Option</th>
-      </tr>
-      
-      <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.decription %></td>
-        <td><%= link_to "Edit", edit_article_path(article) %></td>
-        <td><%= link_to "Show", article_path(article) %></td>
-        <td><%= link_to "Delete", article_path(article), method: :delete, data: {confirm:"Are you sure?"} %></td>
-      </tr>
-      <% end %>
-    </table>
+    <% @articles.each do |article| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+          <div class="article-title">
+            <%= link_to article.title,  article_path(article)%>
+          </div>
+          <div class="article-body">
+            <%= truncate(article.decription, length: 100) %>
+          </div>
+          <div class="article-actions">
+            <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete", article_path(article), method: :delete, 
+                                                      data: { confirm: "Are you sure?"}, 
+                                                      class: "btn btn-xs btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </body>
 </html>

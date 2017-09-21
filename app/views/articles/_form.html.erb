@@ -1,9 +1,5 @@
 <ul>
-  <% @article.errors.full_messages.each do |msg| %>
-    <li>
-      <%= msg %>
-    </li>
-  <% end %>
+  <%= render 'shared/errors', obj: @article %>
 </ul>
 <div class="row">
   <div class="col-xs-l2">

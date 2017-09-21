@@ -3,15 +3,18 @@
     
   </header>
   <body>
-    <ul>
-      <li>
-        <p>title:<%= @article.title %></p>
-      </li>
-      <li>
-        <p>description:<%=@article.decription %></p>
-      </li>
-    </ul>
-    <%= link_to "back to articles listing", articles_path %><br/>
-    <%= link_to "go to edit article" , edit_article_path(@article) %>
+    <h2 align="center"> Title: <%= @article.title %> </h2>
+    <div class="well col-xs-8 col-xs-offset-2">
+      <h4 class="center description"><strong>Descrption</strong></h4>
+      <hr>
+      <%= simple_format(@article.decription) %>
+      <div class="article-actions">
+        <%= link_to "Edit", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+        <%= link_to "Delete", article_path(@article), method: :delete, 
+                                                      data: { confirm: "Are you sure?"}, 
+                                                      class: "btn btn-xs btn-danger" %>
+        <%= link_to "List", articles_path, class: "btn btn-xs btn-success" %>
+      </div>
+    </div>
   </body>
 </html>
