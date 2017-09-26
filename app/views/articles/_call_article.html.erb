@@ -12,7 +12,7 @@
             <small>Created by: <%= article.user.username if article.user %></small>
           </div>
           <div class="article-actions">
-            <% if login? && article.user == current_user %>
+            <% if login? && article.user == current_user || current_user.admin?%>
             <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %>
             <%= link_to "Delete", article_path(article), method: :delete, 
                                                       data: { confirm: "Are you sure?"}, 

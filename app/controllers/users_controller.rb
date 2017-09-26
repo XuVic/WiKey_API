@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:edit, :update, :show]
   before_action :require_same_user, only:[:edit, :update]
+  before_action :require_admin, only:[:destroy]
   
   def index 
     @users = User.paginate(page:params[:page], per_page:2)
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[user_id] = @user.id
       flash[:success] = "Welcome to Alpha blog #{@user.username}."
       redirect_to articles_path
     else
@@ -21,6 +23,11 @@ class UsersController < ApplicationController
   end
   
   def edit 
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
   end
   
   def update
@@ -46,6 +53,12 @@ class UsersController < ApplicationController
   def require_same_user
     if @user != current_user
       flash[:danger] = "You can only edit your account."
+      redirect_to root_path
+    end
+  end
+  def require_admin
+    if login? and !current_user.admin?
+      flash[:danger] = "You don't have permission."
       redirect_to root_path
     end
   end

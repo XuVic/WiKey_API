@@ -12,6 +12,9 @@
             <ii><%= link_to gravatar_for(user), user_path(user) %></li>
             <li class="article_title"><%= link_to user.username, user_path(user) %></li>
             <li><small><%= pluralize(user.articles.count, "article") if user.articles %></small></li>
+            <% if login? and current_user.admin? %>
+              <li><%= link_to "delete", user_path(user), method: :delete, data: {confirm:"Are you sure?"} %></li>
+            <% end %>
           </div>
         </div>
       </ul>
