@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   
   end
   def home
-  
+      redirect_to articles_path if login?
   end
 end

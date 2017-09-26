@@ -15,3 +15,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$.ajax(url: "/test").done (html) ->
+  $("#results").append html
