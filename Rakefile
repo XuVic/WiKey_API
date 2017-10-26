@@ -1,6 +1,28 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+require 'rake/testtask'
 
-require File.expand_path('../config/application', __FILE__)
+Rake::TestTask.new do |t|
+  t.libs.push "lib"
+  t.test_files = FileList['spec/*_spec.rb']
+  t.verbose = true
+end
 
-Rails.application.load_tasks
+namespace :quality do 
+  task :flog do
+    sh 'flog lib/'
+  end
+  
+  task :reek do
+    sh 'reek lib/'
+  end
+end
+
+namespace :git do
+  task :log do
+    sh 'git log --graph --all'
+  end
+  
+  task :add do
+    sh 'git add .'
+  end
+end
+
