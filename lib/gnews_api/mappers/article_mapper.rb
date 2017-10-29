@@ -1,7 +1,7 @@
 module CodePraise
   module Gnews
     #Data Mapper object for google news article
-    class ArticleMapper
+    class ArticlesMapper
       def initialize(gateway)
         @gateway = gateway
       end

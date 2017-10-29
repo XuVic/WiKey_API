@@ -2,13 +2,7 @@ require_relative 'spec_helper'
 
 describe 'Tests Praise library' do
 
-  VCR.configure do |c|
-    c.cassette_library_dir = 'spec/fixtures/cassettes'
-    c.hook_into :webmock
-    c.filter_sensitive_data('<GNEWS_tOKEN>') {GNEWS_TOKEN}
-    c.filter_sensitive_data('<GNEWS_tOKEN_ESC>') {CGI.escape(GNEWS_TOKEN)}
-  end
-  
+
   before do 
     VCR.insert_cassette 'resources', record: :new_episodes
   end
@@ -20,22 +14,27 @@ describe 'Tests Praise library' do
   describe 'News information' do
     
     it 'HAPPY: should provid correct sources attributes' do
-      sources = SourcePraise::GnewsAPI.new(GNEWS_TOKEN).sources
+      api = CodePraise::Gnews::Api.new(GNEWS_TOKEN)
+      sources_mapper = CodePraise::Gnews::SourcesMapper.new(api)
+      sources = sources_mapper.load
       
       _(sources.count).must_equal RESPONSE.count
-      _(sources[0]).must_be_kind_of SourcePraise::Source
+      _(sources[0]).must_be_kind_of CodePraise::Entity::Source
       _(sources[0].name).must_equal RESPONSE[0]['name']
     end
   end
   
   describe 'Articles information' do
     before do
-      @sources = SourcePraise::GnewsAPI.new(GNEWS_TOKEN).sources
-      @articles = SourcePraise::GnewsAPI.new(GNEWS_TOKEN).articles(@sources[0].id)
+      api = CodePraise::Gnews::Api.new(GNEWS_TOKEN)
+      sources_mapper = CodePraise::Gnews::SourcesMapper.new(api)
+      articles_mapper = CodePraise::Gnews::ArticlesMapper.new(api)
+      @sources = sources_mapper.load
+      @articles = articles_mapper.load(@sources[0].id)
     end
     
     it 'HAPPY: should provid correct articles attributes' do
-      _(@articles[0]).must_be_kind_of SourcePraise::Article
+      _(@articles[0]).must_be_kind_of CodePraise::Entity::Article
     end
     
     it 'HAPPY: should identify source' do
