@@ -1,11 +1,11 @@
 require 'roda'
 require 'econfig'
-require 'http'
 require_relative 'lib/gnews_api/init.rb'
 
 module CodePraise
 #Web Api
  class Api < Roda
+   plugin :environments
    plugin :json
    plugin :halt
    gnews_token = '97991b1974954371b41ad62a7f9f5805'
@@ -15,7 +15,7 @@ module CodePraise
       @objects = objects
      end
      
-     def make_array_hash
+     def array_to_hash
        array = []
        @objects.each do |object|
         record = object.to_h
@@ -26,8 +26,8 @@ module CodePraise
    end
    
    route do |routing|
-    # app = Api
-    # config = Api.config
+    #app = Api
+    #config = app.config
    
      routing.root do
        { 'message' => "CodePraise API v0.1 up in development." }
@@ -48,7 +48,7 @@ module CodePraise
            
            # GET /api/v0.1/sources request
            routing.is do
-            { 'sources': Array_helper.new(sources).make_array_hash }
+            { sources: Array_helper.new(sources).array_to_hash }
            end
          end
          # /api/v0.1/articles/:sourcename branch
@@ -62,19 +62,13 @@ module CodePraise
            end
            # GET /api/v0.1/articles/:sourcename request
            routing.is do 
-            { 'source': sourcename, 
-              'size': Array_helper.new(articles).make_array_hash.size,
-              'articles': Array_helper.new(articles).make_array_hash, }
+            { source: sourcename, 
+              size: Array_helper.new(articles).array_to_hash.size,
+              articles: Array_helper.new(articles).array_to_hash, }
            end
-           
          end
        end
      end
-     
-
-     
    end
-   
-   
  end
 end

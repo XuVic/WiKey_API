@@ -1,8 +1,8 @@
 require_relative '../init.rb'
-#require 'rack/test'
+require 'rack/test'
 
-#include Rack::Test::Methods
+include Rack::Test::Methods
 
-#def app#
+def app#
   #CodePraise::Api#
-#end
+end

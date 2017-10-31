@@ -7,10 +7,25 @@ module CodePraise
         class NotFound < StandardError; end
         class Unauthorized < StandardError; end  
       end
-      HTTP_ERROR = {
+      #Response class to judge response success or not
+      class Response
+        HTTP_ERRORS = {
         401 => Errors::Unauthorized,
         404 => Errors::NotFound
-      }
+        }.freeze
+        
+        def initialize(response)
+          @response = response
+        end
+        
+        def successful?
+          HTTP_ERRORS.keys.include?(@response.code) ? false : true
+        end
+        
+        def response_or_error
+          successful? ? @response : raise(HTTP_ERRORS[@response.code])
+        end
+      end
       #setting user token to api library when class is initialized
       def initialize(token)
         @gnews_token = token
@@ -37,7 +52,7 @@ module CodePraise
         HTTP.headers(
           'Accept' => 'application/json',
           'x-api-key' => "#{@gnews_token}" ).get(url)
-        #Error_Helper.successful?(result) ? result : raise_error(result)
+        Response.new(result).response_or_error
       end
     end
   end

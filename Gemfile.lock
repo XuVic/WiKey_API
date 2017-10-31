@@ -79,6 +79,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-test (0.6.3)
+      rack (>= 1.0)
     rainbow (2.2.2)
       rake
     rake (12.1.0)
@@ -125,6 +127,8 @@ DEPENDENCIES
   minitest-rg
   pry
   puma
+  rack-test
+  rake
   reek
   roda
   simplecov
