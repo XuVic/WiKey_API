@@ -6,6 +6,10 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+task :console do
+  sh 'ruby test.rb'
+end
+
 namespace :quality do 
   task :flog do
     sh 'flog lib/'
@@ -26,3 +30,16 @@ namespace :git do
   end
 end
 
+namespace :db do 
+  require_relative 'config/environment.rb'
+  require 'sequel'
+  
+  Sequel.extension :migration
+  app = CodePraise::Api
+  
+  desc 'Run Migrations'
+  task :migrate do
+    puts "Migrating #{app.environment} database to lastest"
+    Sequel::Migrator.run(app.DB, 'infrastructure/database/migrations')
+  end
+end

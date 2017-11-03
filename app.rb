@@ -1,6 +1,5 @@
 require 'roda'
 require 'econfig'
-require_relative 'lib/gnews_api/init.rb'
 
 module CodePraise
 #Web Api
@@ -50,6 +49,34 @@ module CodePraise
            routing.is do
             { sources: Array_helper.new(sources).array_to_hash }
            end
+         end
+         # /api/v0.1/source/name branch
+         routing.on 'source', String do |source_name|
+          # GET /api/v0.1/source/source_name request
+          routing.get do 
+            source = Repository::Sources.find_origin_id(source_name)
+            
+            routing.halt(404, error: 'Source not found.') unless source
+            source.to_h
+          end
+          # POST /api/v0.1/source/source_name
+          routing.post do
+            begin
+              gnews_api = CodePraise::Gnews::Api.new(gnews_token)
+              sources = CodePraise::Gnews::SourcesMapper.new(gnews_api).load
+              @source
+              sources.each do |s|
+               @source = s if s.id == source_name
+              end
+            rescue StandardError
+              routing.halt(404, error: 'Source not found.')
+            end
+              stored_source = Repository::Sources.find_or_create(@source)
+              response.status = 201
+              response['Location'] = "/api/v0.1/source/#{source_name}"
+              
+              stored_source.to_h
+          end
          end
          # /api/v0.1/articles/:sourcename branch
          routing.on 'articles', String do |sourcename|

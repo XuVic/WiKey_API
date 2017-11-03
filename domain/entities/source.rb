@@ -8,7 +8,6 @@ module CodePraise
       attribute :name, Types::Strict::String
       attribute :description, Types::Strict::String
       attribute :category, Types::Strict::String
-      attribute :language, Types::Strict::String
     end
   end
 end

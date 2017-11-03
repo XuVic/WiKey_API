@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-folders = %w[entities lib/gnews_api]
+
+
+folders = %w[domain infrastructure]
 folders.each do |folder|
   require_relative "#{folder}/init.rb"
 end

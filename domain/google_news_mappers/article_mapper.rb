@@ -8,7 +8,11 @@ module CodePraise
       
       def load(source)
         articles_data = @gateway.articles_data(source)
-        build_entity(articles_data['articles'], articles_data['source'])
+        sources = SourcesMapper.new(@gateway).load
+        sources.each do |s|
+          source = s if s.id == source 
+        end
+        build_entity(articles_data['articles'], source)
       end
       
       def build_entity(articles_data, source)
@@ -28,7 +32,7 @@ module CodePraise
             title: self.title,
             description: self.description,
             url: self.url,
-            source: self.source
+            source: @source
           )
         end
         
@@ -46,10 +50,6 @@ module CodePraise
      
         def url
           @article_data['url']
-        end
-     
-        def source
-          @source
         end
       end
     end

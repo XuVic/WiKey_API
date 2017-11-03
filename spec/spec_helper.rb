@@ -16,7 +16,7 @@ record = RESOURCES['http_interactions'][0]['response']['body']['string']
 record = JSON.parse record
 RESPONSE = record['sources']
 
-#ENV['RACK_ENV'] = 'test'
+ENV['RACK_ENV'] = 'test'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/cassettes'

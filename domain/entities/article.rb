@@ -8,7 +8,7 @@ module CodePraise
       attribute :title, Types::Strict::String
       attribute :description, Types::Strict::String
       attribute :url, Types::Strict::String
-      attribute :source, Types::Strict::String
+      attribute :source, Source
     end
   end
 end
