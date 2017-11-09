@@ -3,10 +3,21 @@ source 'https://rubygems.org'
 #Networking gems
 gem 'http'
 
+gem 'nokogiri'
+
 #Web app related
 gem 'econfig'
 gem 'puma'
 gem 'roda'
+
+#Representer
+gem 'roar'
+gem 'multi_json'
+
+#Services
+gem 'dry-monads'
+gem 'dry-transaction'
+
 
 # Database related
 gem 'hirb'

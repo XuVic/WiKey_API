@@ -1,12 +1,14 @@
 require 'pry'
 require 'http'
 require 'rack/test'
+require 'nokogiri'
+require 'open-uri'
 
 gnews_token = '97991b1974954371b41ad62a7f9f5805'
 
 require_relative './config/environment.rb'
 require_relative './init.rb'
-
+require_relative 'application/app.rb'
 include Rack::Test::Methods
 require 'hirb'
 
@@ -23,6 +25,7 @@ gateway = CodePraise::Gnews::Api.new(gnews_token)
 article_repo = CodePraise::Repository::Articles 
 article_mapper = CodePraise::Gnews::ArticlesMapper.new(gateway)  
 
+response = CodePraise::HttpResponseRepresenter
 
 binding.pry
 
