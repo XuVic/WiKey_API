@@ -17,15 +17,13 @@ module CodePraise
       end
       
       def self.create_from(entity)
-        new_source = Sources.find_or_create(entity.source)
-        db_source = Database::SourceOrm.first(origin_id: new_source.id)
+        #new_source = Sources.find_or_create(entity.source)
+        #db_source = Database::SourceOrm.first(origin_id: new_source.id)
         
         article = Database::ArticleOrm.create(
-          author: entity.author,
+          origin_id: entity.origin_id,
           title: entity.title,
-          description: entity.description,
-          url: entity.url,
-          source_id: db_source.id  
+          content: entity.content
         )
         
         rebuild_entity(article)
@@ -35,11 +33,9 @@ module CodePraise
         return nil unless  db_record
           
         Entity::Article.new(
-          author: db_record.author,
+          origin_id: db_record.origin_id.to_i,
           title: db_record.title,
-          description: db_record.description,
-          url: db_record.url,
-          source: db_record.source
+          content: db_record.content
         )
         
       end
