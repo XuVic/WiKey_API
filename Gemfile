@@ -24,7 +24,6 @@ gem 'hirb'
 gem 'sequel'
 
 
-
 #Data gems
 gem 'dry-types'
 gem 'dry-struct'
