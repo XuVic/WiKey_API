@@ -4,11 +4,9 @@ module CodePraise
   module Entity
     #Domian entity object for git sources
     class Article < Dry::Struct
-      attribute :author, Types::Strict::String.optional
+      attribute :origin_id, Types::Strict::Int
       attribute :title, Types::Strict::String
-      attribute :description, Types::Strict::String
-      attribute :url, Types::Strict::String
-      attribute :source, Source
+      attribute :content, Types::Strict::String
     end
   end
 end
