@@ -30,7 +30,7 @@ module CodePraise
           Entity::Article.new(
             origin_id: @article_data['pageid'],
             title: @article_data['title'],
-            content: @article_data['extract']
+            content: self.content
           )
         end
                   
