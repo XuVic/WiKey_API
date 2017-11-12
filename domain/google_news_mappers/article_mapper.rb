@@ -28,7 +28,7 @@ module CodePraise
         
         def build_entity
           Entity::Article.new(
-            author: self.author,
+            origin_id: self.author,
             title: self.title,
             description: self.description,
             url: self.url,
