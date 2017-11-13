@@ -17,7 +17,7 @@ module CodePraise
       end
       Right(source: @source)
       rescue StandardError
-      Left(Result.new(:bad_requset, 'Remote news source not found'))
+      Left(Result.new(:bad_request, 'Remote news source not found'))
     end
     
     def check_if_source_already_load(input)
