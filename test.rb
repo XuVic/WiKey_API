@@ -25,6 +25,8 @@ gateway = CodePraise::Gnews::Api.new(gnews_token)
 article_repo = CodePraise::Repository::Articles 
 article_mapper = CodePraise::Gnews::ArticlesMapper.new(gateway)  
 
+para = 'If you specify a block, then for each element in enum the block is passed an accumulator value (memo) and the element. If you specify a symbol instead, then each element in the collection will be passed to the named method of memo. In either case, the result becomes the new value for memo. At the end of the iteration, the final value of memo is the return value for the method.'
+
 response = CodePraise::HttpResponseRepresenter
 
 binding.pry
