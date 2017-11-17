@@ -27,7 +27,7 @@ gem 'sequel'
 #Data gems
 gem 'dry-types'
 gem 'dry-struct'
-
+gem 'rake'
 
 #Testing gems
 group :test do
@@ -36,14 +36,13 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'rack-test'
-  gem 'rake'
   gem 'simplecov'  
 end
 
 group :development, :test do
   gem 'sqlite3'
   
-  gem 'rake'
+
   gem 'database_cleaner'
   gem 'pry'
   gem 'rerun'
@@ -55,5 +54,4 @@ end
 
 group :production do
   gem 'pg'
-  
 end
