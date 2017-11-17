@@ -57,7 +57,8 @@ module WiKey
         HTTP.headers(
           'Accept' => 'application/json',
         ).get(url)
-        Response.new(result.parse).response_or_error
+        #Response.new(result.parse).response_or_error
+        result.parse
       end
     end
   end
