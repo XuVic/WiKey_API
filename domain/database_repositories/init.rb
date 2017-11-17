@@ -1,3 +1,3 @@
-#require_relative 'for.rb'
-require_relative 'source.rb'
-require_relative 'article.rb'
+Dir.glob("#{File.dirname(__FILE__)}/*.rb").each do |file|
+  require file
+end

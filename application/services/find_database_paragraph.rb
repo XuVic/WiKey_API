@@ -1,17 +1,17 @@
 require 'dry-monads'
 
-module CodePraise
+module WiKey
   # service to find an article from our database
   # usage
   #   result = FindDatabaseArticle.call(title: 'Taiwan')
   #   result.success?
-  module FindDatabaseArticle
+  module FindDatabaseParagraph
     extend Dry::Monads::Either::Mixin
     
     def self.call(input)
-      article = Repository::For[Entity::Article].find_title(input[:title])
-      if article
-        Right(Result.new(:ok, article))
+      paragraphs = Repository::Paragraph.find_by_topic_catalog(input[:topic], input[:catalog])
+      if paragraphs
+        Right(Result.new(:ok, paragraphs))
       else
         Left(Result.new(:not_found, 'Could not find stored article'))
       end

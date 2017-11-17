@@ -1,2 +1,5 @@
 require 'nokogiri'
-require_relative 'wiki_mapper.rb'
+
+Dir.glob("#{File.dirname(__FILE__)}/*.rb").each do |file|
+  require file
+end

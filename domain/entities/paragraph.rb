@@ -1,12 +1,12 @@
 require 'dry-struct'
 
-module CodePraise
+module WiKey
   module Entity
     #Domian entity object for git sources
-    class Article < Dry::Struct
-      attribute :origin_id, Types::Strict::Int
-      attribute :title, Types::Strict::String
+    class Paragraph < Dry::Struct
       attribute :content, Types::Strict::String
+      attribute :catalog, Types::Strict::String
+      attribute :topic, Types::Strict::String
     end
   end
 end

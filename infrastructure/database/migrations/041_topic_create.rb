@@ -2,13 +2,9 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:sources) do
+    create_table(:topics) do
       primary_key :id
-      Integer :origin_id, unique: true
-      
-      String :name
-      String :description
-      String :category
+      String :name, unique: true, null: false
       
       DateTime :created_at
       DateTime :updated_at

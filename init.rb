@@ -2,7 +2,7 @@
 
 
 
-folders = %w[domain infrastructure application]
+folders = %w[application infrastructure domain]
 folders.each do |folder|
   require_relative "#{folder}/init.rb"
 end

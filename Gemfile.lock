@@ -140,6 +140,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    upcastable (0.1.0)
     vcr (3.0.3)
     virtus (1.0.5)
       axiom-types (~> 0.1)
@@ -180,6 +181,7 @@ DEPENDENCIES
   sequel
   simplecov
   sqlite3
+  upcastable
   vcr
   webmock
 

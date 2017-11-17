@@ -1,7 +1,7 @@
 require 'roda'
 require 'econfig'
 
-module CodePraise
+module WiKey
   
   class Api < Roda
     plugin :environments

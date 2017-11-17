@@ -1,6 +1,6 @@
 require 'dry-types'
 
-module CodePraise
+module WiKey
   module Entity
     #Add dry types to Entity module
     module Types

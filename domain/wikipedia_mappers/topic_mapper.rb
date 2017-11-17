@@ -1,8 +1,8 @@
-module CodePraise
+module WiKey
   
   module Wiki
     
-    class WikiMapper
+    class TopicMapper
       
       def initialize(gateway)
         @gateway = gateway
@@ -27,21 +27,12 @@ module CodePraise
         
         def build_entity
           
-          Entity::Article.new(
+          Entity::Topic.new(
             origin_id: @article_data['pageid'],
-            title: @article_data['title'],
-            content: self.content
+            name: @article_data['title'],
           )
         end
                   
-        def content
-          content = ''
-          article_html = Nokogiri::HTML(@article_data['extract'])
-          article_html.css('p').each do |p|
-            content << p.content
-          end
-          content
-        end
       end
     end
   end

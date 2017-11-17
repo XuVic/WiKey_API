@@ -1,8 +1,13 @@
-require_relative './init.rb'
+
+
+
+require_relative '../init'
+
+
 require 'rack/test'
 
 include Rack::Test::Methods
 
 def app
-  CodePraise::Api
+  WiKey::Api
 end

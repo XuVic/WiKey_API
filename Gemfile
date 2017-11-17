@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 
 #Networking gems
 gem 'http'
-
 gem 'nokogiri'
 
 #Web app related
 gem 'econfig'
 gem 'puma'
 gem 'roda'
+gem 'upcastable'
 
 #Representer
 gem 'roar'

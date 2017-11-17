@@ -1,6 +1,6 @@
 require 'dry-struct'
 
-module CodePraise
+module WiKey
 
   module Entity
     

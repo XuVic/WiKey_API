@@ -1,4 +1,4 @@
-module CodePraise
+module WiKey
 
   class HttpResponseRepresenter < Roar::Decorator
     include Roar::JSON
@@ -7,14 +7,14 @@ module CodePraise
     property :message
     
     HTTP_CODE = {
-      ok: 200,
-      created: 201,
+      :ok => 200,
+      :created => 201,
       
-      not_found: 404,
-      bad_requset: 400,
-      conflict: 409,
+      :not_found => 404,
+      :bad_request => 400,
+      :conflict => 409,
       
-      internal_error: 500
+      :internal_error => 500
     }.freeze
     
     def to_json
