@@ -14,7 +14,7 @@ module WiKey
       article = {}
       article['topic'] = topic
       article['catalog'] = catalog
-      if article
+      if article['topic'] && article['catalog']
         Right(Result.new(:ok, article))
       else
         Left(Result.new(:not_found, 'Could not find stored article'))

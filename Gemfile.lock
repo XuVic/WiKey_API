@@ -95,6 +95,7 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     path_expander (1.0.2)
+    pg (0.21.0)
     pry (0.11.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -170,6 +171,7 @@ DEPENDENCIES
   minitest-rg
   multi_json
   nokogiri
+  pg
   pry
   puma
   rack-test

@@ -30,13 +30,5 @@ catalog_mapper = WiKey::Wiki::CatalogMapper.new(gateway)
 catalog_repo = WiKey::Repository::Catalog
 paragraph_mapper = WiKey::Wiki::ParagraphMapper.new(gateway)
 paragraph_repo = WiKey::Repository::Paragraph
-
-url = 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&titles=soa'
-result = 
-        HTTP.headers(
-          'Accept' => 'application/json',
-        ).get(url)
-x = result.parse
-x =  x['query']['pages']['4992502']['extract']
 binding.pry
 

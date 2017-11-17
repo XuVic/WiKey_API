@@ -43,6 +43,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   
+  gem 'rake'
   gem 'database_cleaner'
   gem 'pry'
   gem 'rerun'
@@ -50,4 +51,9 @@ group :development, :test do
   #Quality gems 
   gem 'reek'
   gem 'flog'
+end
+
+group :production do
+  gem 'pg'
+  
 end

@@ -19,3 +19,6 @@
 coverage/
 config/secrets.yml
 *.db
+
+config/app.yml
+.bundle/

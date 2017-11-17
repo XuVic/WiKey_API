@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-11-17T04:07:29+00:00">2017-11-17T04:07:29+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-11-17T04:23:48+00:00">2017-11-17T04:23:48+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">86.98%</span></span>
+    (<span class="covered_percent"><span class="yellow">86.8%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         24.41
+         24.37
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>40</b> files in total.
-    <b>484</b> relevant lines. 
+    <b>485</b> relevant lines. 
     <span class="green"><b>421</b> lines covered</span> and
-    <span class="red"><b>63</b> lines missed </span>
+    <span class="red"><b>64</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -172,12 +172,12 @@
       
       <tr>
         <td class="strong"><a href="#4562c7eab9c484d90ecd4812da1037a3af24ab5f" class="src_link" title="domain/database_repositories/catalog.rb">domain/database_repositories/catalog.rb</a></td>
-        <td class="red strong">78.95 %</td>
+        <td class="red strong">75.0 %</td>
         <td>43</td>
-        <td>19</td>
+        <td>20</td>
         <td>15</td>
-        <td>4</td>
-        <td>9.5</td>
+        <td>5</td>
+        <td>9.1</td>
       </tr>
       
       <tr>
@@ -1733,7 +1733,7 @@
         <li class="missed" data-hits="0" data-linenumber="17">
           
           
-          <code class="ruby">      if article</code>
+          <code class="ruby">      if article[&#39;topic&#39;] &amp;&amp; article[&#39;catalog&#39;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="18">
@@ -2323,11 +2323,11 @@
         <div class="source_table" id="4562c7eab9c484d90ecd4812da1037a3af24ab5f">
   <div class="header">
     <h3>domain/database_repositories/catalog.rb</h3>
-    <h4><span class="red">78.95 %</span> covered</h4>
+    <h4><span class="red">75.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
+      <b>20</b> relevant lines. 
       <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
   </div>
   
@@ -2415,13 +2415,13 @@
         <li class="missed" data-hits="0" data-linenumber="14">
           
           
-          <code class="ruby">        db_catalog = WiKey::Database::CatalogOrm.where(topic_id: db_topic.id).all</code>
+          <code class="ruby">        return nil unless db_topic</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="missed" data-hits="0" data-linenumber="15">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">        db_catalog = WiKey::Database::CatalogOrm.where(topic_id: db_topic.id).all </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="16">
