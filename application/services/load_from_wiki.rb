@@ -10,9 +10,12 @@ module WiKey
     step :store_article_in_repository
     
     def get_article_from_wiki(input)
-      topic = Wiki::TopicMapper.new(input[:gateway]).load(input[:topic])
-      catalog = Wiki::CatalogMapper.new(input[:gateway]).load(input[:topic])
-      paragraphs = Wiki::ParagraphMapper.new(input[:gateway]).load(input[:topic])
+      raw_data = input[:gateway].article_data(input[:topic])
+      key = raw_data['query']['pages'].keys[0]
+      raw_data = raw_data['query']['pages'][key]
+      topic = Wiki::TopicMapper.new(input[:gateway]).build_entity(raw_data)
+      catalog = Wiki::CatalogMapper.new(input[:gateway]).build_entity(raw_data)
+      paragraphs = Wiki::ParagraphMapper.new(input[:gateway]).build_entity(raw_data)
       Right(topic: topic, catalog: catalog, paragraphs: paragraphs)
     rescue StandardError
       Left(Result.new(:bad_request, 'remote wiki article not found'))
