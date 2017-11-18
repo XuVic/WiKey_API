@@ -32,11 +32,11 @@ gem 'rake'
 
 #Testing gems
 group :test do
+  gem 'rack-test'
   gem 'minitest'
   gem 'minitest-rg'
   gem 'vcr'
   gem 'webmock'
-  gem 'rack-test'
   gem 'simplecov'  
 end
 
@@ -55,4 +55,5 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rack-test'
 end
