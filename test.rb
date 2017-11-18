@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'hirb'
 require 'upcastable'
+require 'ostruct'
 
 include Rack::Test::Methods
 

@@ -19,6 +19,18 @@ module WiKey
        # /api/v0.1 branch
        routing.on 'v0.1' do
          # /api/v0.1/topic/name branch
+         routing.on 'topics' do
+           routing.get do
+             find_result = FindDatabaseTopic.all
+             http_response = HttpResponseRepresenter.new(find_result.value)
+             response.status = http_response.http_code
+             if find_result.success?
+               find_result.value.message.each.map {|topic| TopicRepresenter.new(topic).to_json}
+             else
+               http_response.to_json
+             end
+           end
+         end
          routing.on 'topic', String do |topic_name|
           # GET /api/v0.1/topic/topic_name request
           routing.get do 

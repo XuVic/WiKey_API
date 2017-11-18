@@ -15,6 +15,7 @@ module WiKey
       topic = TopicRepresenter.new(@topic).represented.name
       catalog = @catalog.map {|c| CatalogRepresenter.new(c).represented.name}
       result = {}
+      record = {}
       result['topic'] = topic
       result['catalog'] = catalog
       result.to_json
