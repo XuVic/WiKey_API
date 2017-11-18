@@ -1,0 +1,1 @@
+Topics = Struct.new :topics
