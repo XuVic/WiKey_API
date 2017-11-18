@@ -17,8 +17,8 @@ module WiKey
       catalog = Wiki::CatalogMapper.new(input[:gateway]).build_entity(raw_data)
       paragraphs = Wiki::ParagraphMapper.new(input[:gateway]).build_entity(raw_data)
       Right(topic: topic, catalog: catalog, paragraphs: paragraphs)
-    rescue StandardError => e
-      Left(Result.new(:bad_request, e.to_s))
+    rescue StandardError
+      Left(Result.new(:bad_request, 'remote wiki not found'))
     end
     
     def check_if_article_already_loaded(input)

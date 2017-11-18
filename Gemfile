@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 #Networking gems
 gem 'http'
 gem 'nokogiri'
+gem 'pry'
 
 #Web app related
 gem 'econfig'
