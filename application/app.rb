@@ -61,6 +61,19 @@ module WiKey
             end
           end
          end
+         routing.on 'paragraphs', String, String do |topic_name, catalog_name|
+           
+           routing.get do
+             find_result = FindDatabaseParagraph.call(topic: topic_name, catalog: catalog_name)
+             http_response = HttpResponseRepresenter.new(find_result.value)
+             response.status = http_response.http_code
+             if find_result.success?
+               ParagraphsRepresenter.new(Paragraphs.new(find_result.value.message)).to_json
+             else
+               http_response.to_json
+             end
+           end
+         end
        end
      end
    end
