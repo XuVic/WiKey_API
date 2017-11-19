@@ -34,11 +34,12 @@ module WiKey
          routing.on 'topic', String do |topic_name|
           # GET /api/v0.1/topic/topic_name request
           routing.get do 
-            find_result = FindDatabaseTopic.call(topic: topic_name.capitalize)
+            find_result = FindDatabaseArticle.call(topic: topic_name.capitalize)
+            result = find_result.value.message
             http_response = HttpResponseRepresenter.new(find_result.value)
             response.status = http_response.http_code
             if find_result.success?
-              TopicCatalogRepresenter.new(find_result.value.message).to_json    
+              ArticleRepresenter.new(Article.new(result.topic, result.catalogs, result.paragraphs)).to_json    
             else
               http_response.to_json
             end

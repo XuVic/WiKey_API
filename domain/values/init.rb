@@ -1,2 +1,3 @@
-require_relative 'value.rb'
-require_relative 'topics.rb'
+Dir.glob("#{File.dirname(__FILE__)}/*.rb").each do |file|
+  require file
+end

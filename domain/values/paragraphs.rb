@@ -1,0 +1,1 @@
+Paragraphs = Struct.new :paragraphs
