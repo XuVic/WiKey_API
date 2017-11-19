@@ -10,7 +10,7 @@ module WiKey
     
     
     def self.call(input)
-      article = Repository::Article.find(input[:topic])
+      article = Repository::Article.find(input[:topic], input[:catalog])
 
       if article
         Right(Result.new(:ok, article))

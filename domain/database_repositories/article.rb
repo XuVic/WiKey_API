@@ -3,20 +3,20 @@ module WiKey
     
     class Article
       
-      def self.find(topic_name)
+      def self.find(topic_name, catalog_name)
         db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         return nil unless db_topic
         
-        rebuild_entity(db_topic)
+        rebuild_entity(db_topic, catalog_name)
       end
       
-      def self.rebuild_entity(db_record)
+      def self.rebuild_entity(db_record, catalog_name)
         return nil unless db_record
         
         catalogs = db_record.catalogs.map do |db_catalog|
           Catalog.rebuild_entity(db_catalog)
         end
-        default_paragraphs = db_record.paragraphs.select { |p| p.catalog.name == 'default' }
+        default_paragraphs = db_record.paragraphs.select { |p| p.catalog.name == catalog_name }
         paragraphs = default_paragraphs.map do |db_paragraph|
           Paragraph.rebuild_entity(db_paragraph)
         end
