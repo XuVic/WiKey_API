@@ -52,10 +52,11 @@ module WiKey
             )
             
             http_response = HttpResponseRepresenter.new(service_result.value)
+            result = service_result.value.message
             response.status = http_response.http_code
             if service_result.success?
                 response['Loaction'] = "/api/v0.1/source/#{topic_name}"
-                TopicCatalogRepresenter.new(service_result.value.message).to_json
+                ArticleRepresenter.new(Article.new(result.topic, result.catalogs, result.paragraphs)).to_json 
             else
                 http_response.to_json
             end

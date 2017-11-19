@@ -33,10 +33,8 @@ module WiKey
       store_topic = Repository::Topic.create(input[:topic])
       store_catalog = Repository::Catalog.create(input[:catalog])
       store_paragraphs = Repository::Paragraph.create(input[:paragraphs])
-      article = {}
-      article['topic'] = store_topic
-      article['catalog'] = store_catalog
-      article['paragraphs'] = store_paragraphs
+      article = Repository::Article.find(input[:topic].name, 'default')
+      
       Right(Result.new(:created, article))
     rescue StandardError => e
       puts e.to_s
