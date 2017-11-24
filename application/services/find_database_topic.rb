@@ -10,7 +10,7 @@ module WiKey
     
     def self.all
       topics = Repository::Topic.all
-      if topics
+      if !topics.empty?
         Right(Result.new(:ok, topics))
       else
         Left(Result.new(:not_found, 'Could not find stored topics.'))

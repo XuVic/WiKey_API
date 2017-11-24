@@ -13,7 +13,7 @@ describe 'Tests WiKey library' do
     VCR.eject_cassette
   end    
   
-  describe 'Topic and Catalog information' do
+  describe 'Wiki information' do
     before do
       app.DB[:paragraphs].delete
       app.DB[:catalogs].delete
@@ -43,6 +43,52 @@ describe 'Tests WiKey library' do
       end
     end
     
+    describe 'Getting to correct data from DB' do
+      before do 
+        post API_VER + "/topic/#{TOPIC_NAME}"
+      end
+      
+      it 'HAPPY : Should get all topics' do
+        get API_VER + "/topics"
+        
+        response_data = JSON.parse last_response.body
+        _(last_response.status).must_equal 200
+        _(response_data.size).must_be :>, 0
+      end
+      it 'SAD : There are no data in DB' do
+        app.DB[:paragraphs].delete
+        app.DB[:catalogs].delete
+        app.DB[:topics].delete
+        get API_VER + '/topics'
+        _(last_response.status).must_equal 404
+      end
+      
+      it 'HAPPY : Should get topic, catalogs and default paragraphs' do
+        get API_VER + "/topic/#{TOPIC_NAME}"
+        
+        response_data = JSON.parse last_response.body
+        _(response_data.keys.count).must_equal 3
+        _(response_data['paragraphs'][0]['catalog']).must_equal 'default'
+      end
+      it 'SAD : Topic not in DB' do
+        get API_VER + '/topic/gogoro'
+        
+        _(last_response.status).must_equal 404
+      end
+      
+      it 'HAPPY : Should get specific paragraphs with specific catalog' do
+        get API_VER + "/paragraphs/#{TOPIC_NAME}/Etymology"
+        
+        response_data = JSON.parse last_response.body
+        _(response_data.keys.count).must_equal 3
+        _(response_data['paragraphs'][0]['catalog']).must_equal 'Etymology'
+      end
+      it 'SAD : Catalog not exist' do
+        get API_VER + "/paragraphs/#{TOPIC_NAME}/wrong_catalog"
+        
+        _(last_response.status).must_equal 404
+      end
+    end
     
   end
   

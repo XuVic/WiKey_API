@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+#Algo
+gem 'summarize'
+gem 'epitome'
+gem 'graph-rank'
+
 #Networking gems
 gem 'http'
 gem 'nokogiri'

@@ -7,6 +7,8 @@ require 'hirb'
 require 'upcastable'
 require 'ostruct'
 
+require 'graph-rank'
+
 include Rack::Test::Methods
 
 require_relative './config/environment.rb'
