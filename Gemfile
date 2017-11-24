@@ -35,6 +35,7 @@ gem 'dry-types'
 gem 'dry-struct'
 gem 'rake'
 
+gem 'pry'
 #Testing gems
 group :test do
   gem 'rack-test'
@@ -47,8 +48,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  
-  gem 'pry'
+  gem 'database_cleaner'
   gem 'rerun'
   
   #Quality gems 
