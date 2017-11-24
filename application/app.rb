@@ -1,5 +1,4 @@
 require 'roda'
-require 'econfig'
 
 module WiKey
 #Web Api
