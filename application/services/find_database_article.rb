@@ -18,5 +18,17 @@ module WiKey
         Left(Result.new(:not_found, 'Could not find stored article.'))
       end
     end
+    
+    def self.summarize(input)
+      article = Repository::Article.summarize(input[:topic], input[:catalog])
+
+      if article
+        Right(Result.new(:ok, article))
+      else
+        Left(Result.new(:not_found, 'Could not find stored article.'))
+      end
+    end
+    
+  
   end
 end
