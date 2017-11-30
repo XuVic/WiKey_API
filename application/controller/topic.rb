@@ -7,6 +7,7 @@ module WiKey
       
       routing.on String do |topic_name|
         # GET /api/v0.1/topic/topic_name request
+        topic_name = normalized(topic_name)
         routing.get do 
           find_result = FindDatabaseArticle.call(topic: topic_name.capitalize, catalog: 'default')
           result = find_result.value.message
