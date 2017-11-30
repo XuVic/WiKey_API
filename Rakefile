@@ -11,12 +11,13 @@ task :console do
 end
 
 namespace :quality do 
+  CODE = '**/*.rb'
   task :flog do
-    sh 'flog lib/'
+    sh "flog #{CODE}"
   end
   
   task :reek do
-    sh 'reek lib/'
+    sh "reek #{CODE}"
   end
 end
 

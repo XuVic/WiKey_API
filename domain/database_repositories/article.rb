@@ -7,34 +7,22 @@ module WiKey
         db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         return nil unless db_topic
         
-        rebuild_entity(db_topic, catalog_name, [])
+        rebuild_entity(db_topic, catalog_name, false)
       end
       
       def self.summarize(topic_name, catalog_name)
         db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         return nil unless db_topic
         
-        rebuild_entity(db_topic, catalog_name, [topic_name, catalog_name])
+        rebuild_entity(db_topic, catalog_name, true)
       end
       
       def self.rebuild_entity(db_record, catalog_name, summary)
         return nil unless db_record 
-        catalog_error = true
-        catalogs = db_record.catalogs.map do |db_catalog|
-          Catalog.rebuild_entity(db_catalog)
-        end
-        catalogs.each do |catalog|
-          catalog_error = false if catalog.name == catalog_name
-        end
-        return nil if catalog_error
-        default_paragraphs = db_record.paragraphs.select { |p| p.catalog.name == catalog_name }
-        if summary.empty?
-          paragraphs = default_paragraphs.map do |db_paragraph|
-            Paragraph.rebuild_entity(db_paragraph, nil)
-          end
-        else
-          paragraphs = Paragraph.summarize(summary[0], summary[1])
-        end
+        catalogs = build_catalog(db_record)
+        return nil if catalog_error(catalogs, catalog_name)
+        
+        paragraphs = build_pargraphs(db_record, catalog_name, summary)
     
         Entity::Article.new(
           topic: Topic.rebuild_entity(db_record),
@@ -42,6 +30,30 @@ module WiKey
           paragraphs: paragraphs
         )
       end
+      
+      private
+      def self.catalog_error(catalogs, catalog_name)
+        error = true
+        catalogs.each do |catalog|
+          error = false if catalog.name == catalog_name
+        end
+        error
+      end
+      
+      def self.build_catalog(db_record)
+        db_record.catalogs.map do |db_catalog|
+          Catalog.rebuild_entity(db_catalog)
+        end
+      end
+      
+      def self.build_pargraphs(db_record, catalog_name, summary)
+        if summary
+          Paragraph.summarize(db_record.name, catalog_name)
+        else
+          Paragraph.find_by_topic_catalog(db_record.name, catalog_name)
+        end
+      end
+      
     end
   end
 end

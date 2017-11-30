@@ -23,11 +23,11 @@ module WiKey
       
         def initialize(article_data)
           @article_data = article_data
+          @paragraphs = []
         end
         
         def build_entity
           paragraph_hash = build_paragraphs_in_hash
-          paragraphs = []
           paragraph_hash.keys.each do |key|
             paragraph_hash[key].each do |value|
               paragraph = Entity::Paragraph.new(
@@ -35,45 +35,56 @@ module WiKey
                 topic: @article_data['title'],
                 catalog: key 
               )
-              paragraphs.push(paragraph)
+              @paragraphs.push(paragraph)
             end
           end
-          paragraphs
+          @paragraphs
         end
         
         private
-        def build_catalogs
-          html_doc = Nokogiri::HTML(@article_data['extract'])
-          catalogs = html_doc.css('h2')
-          catalogs
+        def pre_setting
+          @catalog_hash = {}
+          @catalog_hash['default'] = []
+          setting_catalogs
+          setting_hash_with_catalog
         end
         
-        def build_hash
-          catalogs = build_catalogs
-          article_hash = {}
-          article_hash['default'] = []
-          catalogs.each do |catalog|
+        def nokogiri_parse
+          Nokogiri::HTML(@article_data['extract'])
+        end
+        
+        def setting_catalogs
+          html_doc = nokogiri_parse
+          @catalogs = html_doc.css('h2')
+        end
+        
+        def setting_hash_with_catalog
+          @catalogs.each do |catalog|
             break if catalog.text == 'See also'
-            article_hash[catalog.text] = []
+            @catalog_hash[catalog.text] = []
           end
-          article_hash
         end
         
-        def build_paragraphs_in_hash
-           html_doc = Nokogiri::HTML(@article_data['extract'])
-           elements = html_doc.children[1].children[0].children
-           paragraph_hash = build_hash
+        def a_paragraph(element)
+          element.name != 'h2' && !element.text.include?("\n") && !element.text.empty?
+        end
+        
+        def setting_paragraphs(hash, elements)
            key = 'default'
            elements.each do |element|
              break if element.text == 'See also'
-             if element.name != 'h2' && !element.text.include?("\n") && !element.text.empty?
-               paragraph_hash[key].push(element.text)
-             elsif element.name == 'h2'
-               key = element.text
-             end
+             hash[key].push(element.text) if a_paragraph(element)
+             key = element.text if element.name == 'h2'
            end
-           paragraph_hash
+           hash
         end
+        
+        def build_paragraphs_in_hash
+           pre_setting
+           elements = nokogiri_parse.children[1].children[0].children
+           setting_paragraphs(@catalog_hash, elements)
+        end
+        
         
       end
     end
