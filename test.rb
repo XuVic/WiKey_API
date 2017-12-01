@@ -13,7 +13,7 @@ include Rack::Test::Methods
 
 require_relative './config/environment.rb'
 require_relative './init.rb'
-require_relative 'application/app.rb'
+require_relative 'application/controllers/app.rb'
 
 Hirb.enable
 
