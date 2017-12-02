@@ -6,6 +6,8 @@ require 'open-uri'
 require 'hirb'
 require 'upcastable'
 require 'ostruct'
+require 'concurrent'
+require 'benchmark'
 
 require 'graph-rank'
 
