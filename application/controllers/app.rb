@@ -28,5 +28,11 @@ module WiKey
        end
      end
    end
+   
+   private
+   def normalize(string)
+    string.gsub!('%20', ' ')
+    string.gsub('_', ' ')
+   end
  end
 end

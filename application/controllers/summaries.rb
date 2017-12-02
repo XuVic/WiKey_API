@@ -5,6 +5,8 @@ module WiKey
     route('summaries') do |routing|
     
       routing.on String, String do |topic_name, catalog_name|
+        topic_name = normalize(topic_name)
+        catalog_name = normalize(catalog_name)
         routing.get do
           find_result = FindDatabaseArticle.summarize(topic: topic_name.capitalize, catalog: catalog_name)
           result = find_result.value.message
