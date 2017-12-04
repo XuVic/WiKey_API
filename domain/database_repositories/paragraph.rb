@@ -10,12 +10,11 @@ module WiKey
         db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         db_catalog = Database::CatalogOrm.first(name: catalog_name)
         paragraphs =  Database::ParagraphOrm.where(topic_id: db_topic.id, catalog_id: db_catalog.id).all
-        summaries = []
-        paragraphs.each do |paragraph|
+        paragraphs.map do |paragraph|
           record = Entity::Summarize.new(paragraph.content)
           summaries.push(record.summarize)
+          rebuild_entity(paragraph, record.summarize)
         end
-        summaries.map {|summary| rebuild_entity(paragraphs[0], summary)}
       end
       
       def self.all

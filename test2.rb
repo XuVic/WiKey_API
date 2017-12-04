@@ -1,9 +1,13 @@
-def asyn(input)
-  build_entity(input,get_raw_data(input))
+def syn(inputs)
+  inputs.map do |input|
+    build_entity(input,get_raw_data(input))
+  end
 end
 
-def concurrent(input)
-  Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.rescue{raise StandardError.new("Here comes the Boom!")}.execute
+def concurrent(inputs)
+  inputs.map do |input|
+    Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}
+  end.map(&:execute).map(&:value)
 end
 
 def get_raw_data(input)
@@ -20,7 +24,40 @@ def build_entity(input, raw_data)
   article
 end
 
+
 Benchmark.bm(10) do |bench|
-  bench.report('sync:') { asyn(input) }
-  bench.report('concurrent:') { concurrent(input) }
+  bench.report('sync:') { syn(inputs) }
+  bench.report('concurrent:') { concurrent(inputs) }
 end
+
+require 'aws-sdk-sqs'
+config = app.config
+sqs = Aws::SQS::Client.new(access_key_id: config.AWS_ACCESS_KEY_ID,
+                           secret_access_key: config.AWS_SECRET_ACCESS_KEY,
+                           region: config.AWS_REGION)
+                           
+q_url = sqs.get_queue_url(queue_name: 'demo_queue.fifo').queue_url
+queue = Aws::SQS::Queue.new(q_url)
+
+def send_msg(msg, queue)
+  msg = {code: msg}
+  unique = Time.now
+  
+  queue.send_message(
+    message_body: msg.to_json,
+    message_group_id: 'soa_demo',
+    message_deduplication_id: 'soa-deom' + unique.hash.to_s
+  )
+end
+
+message = queue.receive_messages
+msg = message.first
+
+queue.delete_messages(
+  entries: [
+    {
+      id: msg.message_id,
+      receipt_handle: msg.receipt_handle
+    }
+  ]
+)

@@ -1,0 +1,19 @@
+=> [32m#<Aws::SQS::Message::Collection:0x00000000037f8ed0[0m
+ @batches[32m=[0m
+  [[[32m#<Aws::SQS::Message:0x00000000037f8fe8[0m
+     @client[32m=[0m[32m#<Aws::SQS::Client>[0m,
+     @data[32m=[0m
+      [32m#<struct Aws::SQS::Types::Message[0m
+       message_id[32m=[0m[31m[1;31m"[0m[31m0a8e31a3-f014-408e-8ea8-dcec698fcc4a[1;31m"[0m[31m[0m,
+       receipt_handle[32m=[0m
+        [31m[1;31m"[0m[31mAQEBn4xW8VO6u3orpAaPjBzyhECm8BtMaSWqOF3J2XZ2BJpu90B71h0vqApCe5v4oGE4OgooP/EOHvaVJZ0vsrY6VxMaN+JaBnmo6YZPyIQvzbnV28o0od+ptWf3fg0nJKKzAwDhgucB03h3dBMEGWTtBnmE2q1iHhU/3FW3NPgH+lWQ/N4IiHqpsReqR10IR0yRFHNzOXAe5m0CTLmuj+yPLd57hEcKJ5r6vUxXfK+kV57ISEtKx3/rPKEE5ZONzbd+HEPCXwtrEaQ4CZWUITfPWw==[1;31m"[0m[31m[0m,
+       md5_of_body[32m=[0m[31m[1;31m"[0m[31m5edad944dc760b7965971601c63054b0[1;31m"[0m[31m[0m,
+       body[32m=[0m[31m[1;31m"[0m[31m{[1;35m\"[0m[31mcode[1;35m\"[0m[31m:[1;35m\"[0m[31m123[1;35m\"[0m[31m}[1;31m"[0m[31m[0m,
+       attributes[32m=[0m{},
+       md5_of_message_attributes[32m=[0m[1;36mnil[0m,
+       message_attributes[32m=[0m{}[32m>[0m,
+     @queue_url[32m=[0m[31m[1;31m"[0m[31mhttps://sqs.us-east-2.amazonaws.com/628265443624/demo_queue.fifo[1;31m"[0m[31m[0m,
+     @receipt_handle[32m=[0m
+      [31m[1;31m"[0m[31mAQEBn4xW8VO6u3orpAaPjBzyhECm8BtMaSWqOF3J2XZ2BJpu90B71h0vqApCe5v4oGE4OgooP/EOHvaVJZ0vsrY6VxMaN+JaBnmo6YZPyIQvzbnV28o0od+ptWf3fg0nJKKzAwDhgucB03h3dBMEGWTtBnmE2q1iHhU/3FW3NPgH+lWQ/N4IiHqpsReqR10IR0yRFHNzOXAe5m0CTLmuj+yPLd57hEcKJ5r6vUxXfK+kV57ISEtKx3/rPKEE5ZONzbd+HEPCXwtrEaQ4CZWUITfPWw==[1;31m"[0m[31m[0m[32m>[0m]],
+ @limit[32m=[0m[1;36mnil[0m,
+ @size[32m=[0m[1;34m1[0m[32m>[0m

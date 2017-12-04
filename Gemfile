@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.3.4'
+ruby '2.4.2'
+
+#Optimize
+gem 'aws-sdk-sqs', '~> 1'
 
 #Algo
 gem 'summarize'

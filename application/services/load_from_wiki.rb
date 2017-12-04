@@ -11,12 +11,10 @@ module WiKey
     step :store_article_in_repository
     
     def get_article_from_wiki(input)
-      article = Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.execute
-      if !article.value.nil?
-        Right(article: article.value)  
-      else
+      article = build_entity(input, get_raw_data(input))
+        Right(article: article)  
+      rescue StandardError
         Left(Result.new(:bad_request, 'Remote article not found.'))
-      end
     end
     
     def check_if_article_already_loaded(input)

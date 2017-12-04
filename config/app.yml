@@ -1,5 +1,11 @@
 ---
   development:
     db_filename: infrastructure/database/dev.db
+    AWS_ACCESS_KEY_ID: AKIAJBHFVGIAVU5ZIIIQ
+    AWS_SECRET_ACCESS_KEY: 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
+    AWS_REGION: us-east-2
   test:
     db_filename: infrastructure/database/test.db
+    AWS_ACCESS_KEY_ID: AKIAJBHFVGIAVU5ZIIIQ
+    AWS_SECRET_ACCESS_KEY: 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
+    AWS_REGION: us-east-2

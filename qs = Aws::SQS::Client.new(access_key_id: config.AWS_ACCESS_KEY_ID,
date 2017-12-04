@@ -1,0 +1,17 @@
+=> [32m#<Econfig::Configuration:0x000000031e02c8[0m
+ @backends[32m=[0m
+  [32m#<Econfig::BackendCollection:0x000000031e0228[0m
+   @backends[32m=[0m
+    [[[33m:memory[0m, [32m#<Econfig::Memory:0x000000031e01b0[0m @mutex[32m=[0m[32m#<Thread::Mutex:0x000000031e0188[0m[32m>[0m, @options[32m=[0m{}[32m>[0m],
+     [[33m:env[0m, [32m#<Econfig::ENV:0x000000031e00e8[0m[32m>[0m],
+     [[33m:secrets[0m, [32m#<Econfig::YAML:0x000000031e0020[0m @mutex[32m=[0m[32m#<Thread::Mutex:0x000000031e0a48[0m[32m>[0m, @options[32m=[0m{}, @path[32m=[0m[31m[1;31m"[0m[31mconfig/secrets.yml[1;31m"[0m[31m[0m[32m>[0m],
+     [[33m:yaml[0m,
+      [32m#<Econfig::YAML:0x000000031e3ce8[0m
+       @mutex[32m=[0m[32m#<Thread::Mutex:0x000000031e3838[0m[32m>[0m,
+       @options[32m=[0m
+        {[31m[1;31m"[0m[31mdb_filename[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31minfrastructure/database/dev.db[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mAWS_ACCESS_KEY_ID[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mAKIAJBHFVGIAVU5ZIIIQ[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mAWS_SECRET_ACCESS_KEY[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mdgLtwkAtne+JaZydNlOxzJf+qt+XxdAkckSgLHoi[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mAWS_REGION[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mus-east-2[1;31m"[0m[31m[0m},
+       @path[32m=[0m[31m[1;31m"[0m[31mconfig/app.yml[1;31m"[0m[31m[0m[32m>[0m]][32m>[0m,
+ @default_write_backend[32m=[0m[33m:memory[0m[32m>[0m
