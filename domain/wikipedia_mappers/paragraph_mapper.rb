@@ -9,14 +9,18 @@ module WiKey
       end
       
       def load(topic)
-        article_data = @gateway.article_data(topic)
-        key = article_data['query']['pages'].keys[0]
-        article_data = article_data['query']['pages'][key]
-        build_entity(article_data)
+        build_entity(get_raw_data(topic))
       end
       
       def build_entity(article_data)
         DataMapper.new(article_data).build_entity
+      end
+      
+      private 
+      def get_raw_data(topic)
+        article_data = @gateway.article_data(topic)
+        key = article_data['query']['pages'].keys[0]
+        article_data['query']['pages'][key]
       end
       
       class DataMapper

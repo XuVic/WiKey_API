@@ -6,17 +6,6 @@ module WiKey
     
     class Paragraph
       
-      def self.summarize(topic_name, catalog_name)
-        db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
-        db_catalog = Database::CatalogOrm.first(name: catalog_name)
-        paragraphs =  Database::ParagraphOrm.where(topic_id: db_topic.id, catalog_id: db_catalog.id).all
-        paragraphs.map do |paragraph|
-          record = Entity::Summarize.new(paragraph.content)
-          summaries.push(record.summarize)
-          rebuild_entity(paragraph, record.summarize)
-        end
-      end
-      
       def self.all
         Database::ParagraphOrm.all.map {|db_paragraph| rebuild_entity(db_paragraph, nil)}
       end
@@ -44,25 +33,18 @@ module WiKey
           db_paragraph.save
         end
         
-        db_paragraphs.map {|db_paragraph| rebuild_entity(db_paragraph, nil)}
+        db_paragraphs.map {|db_paragraph| rebuild_entity(db_paragraph)}
         
       end
       
-      def self.rebuild_entity(db_record, summary)
+      def self.rebuild_entity(db_record)
         return nil unless db_record
-        if summary == nil 
-          Entity::Paragraph.new(
-            content: db_record.content,
-            catalog: db_record.catalog.name,
-            topic: db_record.topic.name
-          )
-        else
-          Entity::Paragraph.new(
-            content: summary,
-            catalog: db_record.catalog.name,
-            topic: db_record.topic.name
-          )
-        end
+     
+        Entity::Paragraph.new(
+          content: db_record.content,
+          catalog: db_record.catalog.name,
+          topic: db_record.topic.name
+        )
       end
       
     end

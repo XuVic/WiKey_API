@@ -4,5 +4,6 @@ module WiKey
     include Roar::JSON
     
     property :name
+    property :rank
   end
 end

@@ -10,6 +10,22 @@ module WiKey
       attribute :topic, Entity::Topic
       attribute :catalogs, Types::Strict::Array.member(Entity::Catalog)
       attribute :paragraphs, Types::Strict::Array.member(Entity::Paragraph)
+    
+      def select_from(catalog_name)
+        @paragraphs.select {|p| p.catalog == catalog_name}
+      end
+    
+      def summaries(catalog_name)
+        paragraphs = select_from(catalog_name)
+        paragraphs.map do |paragraph|
+          record = Entity::Summarize.new(paragraph.content)
+          Entity::Paragraph.new(
+            content: record.summarize,
+            catalog: catalog_name,
+            topic: @topic.name
+          )
+        end
+      end
     end
   end
 end

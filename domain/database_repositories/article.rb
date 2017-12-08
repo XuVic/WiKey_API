@@ -3,38 +3,22 @@ module WiKey
     
     class Article
       
-      def self.find(topic_name, catalog_name)
+      def self.find(topic_name)
         db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         return nil unless db_topic
         
-        rebuild_entity(db_topic, catalog_name, [])
+        rebuild_entity(db_topic)
       end
       
-      def self.summarize(topic_name, catalog_name)
-        db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
-        return nil unless db_topic
-        
-        rebuild_entity(db_topic, catalog_name, [topic_name, catalog_name])
-      end
-      
-      def self.rebuild_entity(db_record, catalog_name, summary)
+      def self.rebuild_entity(db_record)
         return nil unless db_record 
-        catalog_error = true
         catalogs = db_record.catalogs.map do |db_catalog|
           Catalog.rebuild_entity(db_catalog)
         end
-        catalogs.each do |catalog|
-          catalog_error = false if catalog.name == catalog_name
+        paragraphs = db_record.paragraphs.map do |db_paragraph|
+          Paragraph.rebuild_entity(db_paragraph)
         end
-        return nil if catalog_error
-        default_paragraphs = db_record.paragraphs.select { |p| p.catalog.name == catalog_name }
-        if summary.empty?
-          paragraphs = default_paragraphs.map do |db_paragraph|
-            Paragraph.rebuild_entity(db_paragraph, nil)
-          end
-        else
-          paragraphs = Paragraph.summarize(summary[0], summary[1])
-        end
+
     
         Entity::Article.new(
           topic: Topic.rebuild_entity(db_record),

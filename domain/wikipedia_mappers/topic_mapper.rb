@@ -30,6 +30,7 @@ module WiKey
           Entity::Topic.new(
             origin_id: @article_data['pageid'],
             name: @article_data['title'],
+            rank: 0
           )
         end
                   
