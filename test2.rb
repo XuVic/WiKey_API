@@ -61,3 +61,13 @@ queue.delete_messages(
     }
   ]
 )
+
+
+def load_multiple(topics, datamapper, n)
+  begin
+    
+  rescue StandardError
+  
+  end
+
+end

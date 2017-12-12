@@ -10,11 +10,11 @@ module WiKey
             gateway: WiKey::Wiki::Api, 
             topic: topic_name.capitalize
           )
-          result = find_result.value.message
-          result.topic.rankup
           http_response = HttpResponseRepresenter.new(find_result.value)
           response.status = http_response.http_code
-          if find_result.success?
+          if http_response.ok?
+            result = find_result.value.message
+            result.topic.rankup
             ArticleRepresenter.new(Article.new(result.topic, result.catalogs, result.summaries('default'))).to_json    
           else
             http_response.to_json

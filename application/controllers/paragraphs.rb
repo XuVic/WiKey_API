@@ -10,6 +10,7 @@ module WiKey
         routing.get do
           find_result = FindDatabaseArticle.new.call(
             topic: topic_name.capitalize,
+            catalog: catalog_name,
             gateway: WiKey::Wiki::Api
           )
           result = find_result.value.message

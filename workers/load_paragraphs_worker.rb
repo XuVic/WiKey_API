@@ -35,9 +35,8 @@ class LoadParagraphsWorker
   
   def concurrent(inputs, datamapper)
     inputs.map do |input|
-      Concurrent::Promise.new { datamapper.get_raw_data(input) }.then {|raw_data| datamapper.build_entity(raw_data)}
+      Concurrent::Promise.new { datamapper.get_raw_data(input) }.then {|raw_data| datamapper.build_entity(raw_data)}.rescue {{error: "#{input} not found."}}
     end.map(&:execute).map(&:value)
   end
-  
   
 end

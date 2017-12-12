@@ -16,18 +16,5 @@ module WiKey
         Left(Result.new(:not_found, 'Could not find stored topics.'))
       end
     end
-    
-    def self.call(input)
-      topic = Repository::Topic.find_by_name(input[:topic])
-      catalog = Repository::Catalog.find_by_topic(input[:topic])
-      article = {}
-      article['topic'] = topic
-      article['catalog'] = catalog
-      if article['topic'] && article['catalog']
-        Right(Result.new(:ok, article))
-      else
-        Left(Result.new(:not_found, 'Could not find stored article.'))
-      end
-    end
   end
 end

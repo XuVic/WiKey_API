@@ -19,6 +19,9 @@ require_relative 'test_load_all.rb'
 load 'Rakefile'
 Rake::Task['db:reset'].invoke
 
+ENV['AWS_ACCESS_KEY_ID'] = app.config.AWS_ACCESS_KEY_ID
+ENV['AWS_SECRET_ACCESS_KEY'] = app.config.AWS_SECRET_ACCESS_KEY
+ENV['AWS_REGION'] = app.config.AWS_REGION
 
 TOPIC_NAME = 'Taiwan'.freeze
 

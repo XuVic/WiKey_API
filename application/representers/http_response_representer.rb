@@ -9,11 +9,11 @@ module WiKey
     HTTP_CODE = {
       :ok => 200,
       :created => 201,
+      :processing => 202,
       
       :not_found => 404,
       :bad_request => 400,
       :conflict => 409,
-      
       :internal_error => 500
     }.freeze
     
@@ -21,8 +21,16 @@ module WiKey
       http_message.to_json
     end
     
+    def processing?
+      @represented.code == :processing
+    end
+    
     def http_code
       HTTP_CODE[@represented.code]
+    end
+    
+    def ok?
+      @represented.code == :ok
     end
     
     private 
