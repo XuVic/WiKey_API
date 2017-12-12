@@ -7,8 +7,8 @@ module WiKey
     include Dry::Transaction
     
     step :load_hot_topics
+    step :store_or_not
     step :load_from_wiki
-    step :store_all_paragraphs
     
     def load_hot_topics(input)
       topics = Repository::Topic.find_top(input[:topic_number])
@@ -28,20 +28,6 @@ module WiKey
       rescue StandardError => e
       puts e
       Left(Result.new(:bad_request, 'Topics name error'))
-    end
-    
-    def store_all_paragraphs(hot_articles)
-      hot_articles.each do |article|
-          begin
-            Repository::Paragraph.create(article.paragraphs)
-          rescue StandardError => e
-            puts e
-            Left(Result.new(:internal_error, 'Paragraphs cant be stored.'))
-          end
-      end
-      
-      Right(Result.new(:ok, hot_articles))
-      
     end
     
   end

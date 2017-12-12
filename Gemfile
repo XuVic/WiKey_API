@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.4.2'
 
-#Optimize
+#Asychronous
 gem 'aws-sdk-sqs', '~> 1'
+gem 'shoryuken', '~> 3'
 
 #Algo
 gem 'summarize'

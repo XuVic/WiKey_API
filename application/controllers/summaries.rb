@@ -8,12 +8,15 @@ module WiKey
         topic_name = normalize(topic_name)
         catalog_name = normalize(catalog_name)
         routing.get do
-          find_result = FindDatabaseArticle.summarize(topic: topic_name.capitalize, catalog: catalog_name)
+          find_result = FindDatabaseArticle.new.call(
+            gateway: WiKey::Wiki::Api, 
+            topic: topic_name.capitalize
+          )
           result = find_result.value.message
           http_response = HttpResponseRepresenter.new(find_result.value)
           response.status = http_response.http_code
           if find_result.success?
-            ArticleRepresenter.new(Article.new(result.topic, result.catalogs, result.paragraphs)).to_json 
+            ArticleRepresenter.new(Article.new(result.topic, result.catalogs, result.summaries(catalog_name))).to_json 
           else
             http_response.to_json
           end

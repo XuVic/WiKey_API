@@ -9,6 +9,7 @@ module WiKey
     include Dry::Transaction
   
     step :find_topic  
+    #step :db_exist?
     step :load_paragraphs
     
     def find_topic(input)

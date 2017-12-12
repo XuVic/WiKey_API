@@ -2,3 +2,4 @@
 
 require_relative './init.rb'
 run WiKey::Api.freeze.app
+

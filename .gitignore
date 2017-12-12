@@ -22,3 +22,4 @@ config/secrets.yml
 
 config/app.yml
 .bundle/
+

@@ -24,7 +24,6 @@ module WiKey
       def self.create(entities)
         db_topic = Database::TopicOrm.first(name: entities[0].topic)
         db_catalog = Database::CatalogOrm.first(name: entities[0].catalog)
-        
         db_paragraphs = entities.map do |entity|
           db_catalog = Database::CatalogOrm.first(name: entity.catalog) if db_catalog.name != entity.catalog
           db_paragraph = Database::ParagraphOrm.new(content: entity.content)
