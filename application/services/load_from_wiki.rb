@@ -30,7 +30,7 @@ module WiKey
       Right(Result.new(:created, input[:article]))
     rescue StandardError => e
       puts e.to_s
-      Left(Result.new(:internal_error, e.to_s))
+      Left(Result.new(:internal_error, 'Could not store remote repository'))
     end
 
 
