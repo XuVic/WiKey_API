@@ -8,7 +8,7 @@ def concurrent(inputs)
   m = inputs.size
   n = 1
   promises = inputs.map do |input|
-    Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.rescue {{error: "#{input} not found."}}
+    Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.then{|article| store(article)}.rescue {{error: "#{input} not found."}}
   end
   promises.map do |promise|
     puts n/m.to_f
@@ -23,6 +23,9 @@ def concurrent(inputs)
   end.map(&:execute).map(&:value)
 end
 
+def store(article)
+  WiKey::Repository::Article.create(article)
+end
 
 def build_entity(input, raw_data)
   WiKey::Wiki::ArticleMapper.new(input[:gateway]).build_entity(raw_data)

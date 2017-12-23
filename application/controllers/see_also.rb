@@ -7,8 +7,15 @@ module WiKey
       routing.on String do |topic_name|
          topic_name = normalize(topic_name)
          
+         request_id = [request.env, request.path, Time.now.to_f].hash
+         
+         
          routing.get do 
-           find_result = LoadMultipleFromWiki.new.call(topic_name)
+           find_result = LoadMultipleFromWiki.new.call(
+             :topic_name => topic_name,
+             :id => request_id
+           )
+           
            topics = find_result.value.message
            http_response = HttpResponseRepresenter.new(find_result.value)
            response.status = http_response.http_code

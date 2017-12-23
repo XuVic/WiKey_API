@@ -4,6 +4,7 @@ ruby '2.4.2'
 #Asychronous
 gem 'aws-sdk-sqs', '~> 1'
 gem 'shoryuken', '~> 3'
+gem 'faye', '~> 1'
 
 #Algo
 gem 'summarize'
