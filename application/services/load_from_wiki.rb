@@ -39,6 +39,7 @@ module WiKey
     def store_data(input)
       Repository::Topic.create(input[:article][:topic])
       Repository::Catalog.create(input[:article][:catalogs])
+      #Repository::Paragraph.create(input[:article][:paragraphs])
     end
     
   end

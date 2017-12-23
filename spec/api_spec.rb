@@ -90,6 +90,24 @@ describe 'Tests WiKey library' do
       end
     end
     
+    describe 'Getting mulitple topics which related to main topic' do
+      before do 
+        post API_VER + "/topic/#{TOPIC_NAME}"
+      end
+      
+      it 'HAPPY : Should get mulitple topics with default paragraphs' do
+        get API_VER + "/see_also/#{TOPIC_NAME}"
+        _(last_response.status).must_equal 202
+        
+        5.times { sleep(1); print '.' }
+        
+        get API_VER + "/see_also/#{TOPIC_NAME}"
+        _(last_response.status).must_equal 200
+        
+      end
+      
+    end
+    
   end
   
 end

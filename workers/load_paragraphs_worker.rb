@@ -22,14 +22,16 @@ class LoadParagraphsWorker
   def perform(_sqs_msg, worker_request)
     topics = JSON.parse worker_request
     articles = concurrent(topics, WiKey::Wiki::ArticleMapper.new(WiKey::Wiki::Api))
-    store_paragraphs(articles)
+    store(articles)
+
   end
   
   private
   
-  def store_paragraphs(articles)
+  def store(articles)
+    articles.select! {|article| article.class == WiKey::Entity::Article }
     articles.each do |article|
-      WiKey::Repository::Paragraph.create(article.paragraphs)
+        WiKey::Repository::Article.create(article)
     end
   end
   
@@ -37,6 +39,18 @@ class LoadParagraphsWorker
     inputs.map do |input|
       Concurrent::Promise.new { datamapper.get_raw_data(input) }.then {|raw_data| datamapper.build_entity(raw_data)}.rescue {{error: "#{input} not found."}}
     end.map(&:execute).map(&:value)
+  end
+  
+  def publish(channel, message)
+    puts "Posting progress: #{message}"
+    HTTP.headers(content_type: 'application/json')
+        .post(
+          "#https://wikeyapi.herokuapp.com/faye",
+          body: {
+            channel: "/#{channel}",
+            data: message
+          }.to_json
+        )
   end
   
 end

@@ -7810,4 +7810,196 @@ http_interactions:
       string: ''
     http_version: 
   recorded_at: Mon, 04 Dec 2017 08:07:13 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/628265443624/load_paragraphs.fifo
+    body:
+      encoding: UTF-8
+      string: Action=GetQueueAttributes&AttributeName.1=All&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2F628265443624%2Fload_paragraphs.fifo&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.11.0 ruby/2.4.2 x86_64-linux aws-sdk-sqs/1.3.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20171223T092606Z
+      X-Amz-Content-Sha256:
+      - da4882a33173f17acfb36d73e6e7da09d00fcee38cfc72b1bd64cb621f8bcbce
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIOGLSX27XLPBFHLA/20171223/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=67be9738bf3810e5e41b24f4812e0f96691a0bbf44a1aacfe50431a06e90039d
+      Content-Length:
+      - '153'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sat, 23 Dec 2017 09:26:07 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1318'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - a63d289a-15b3-5e80-9cbb-7a2236dca83e
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><GetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueAttributesResult><Attribute><Name>QueueArn</Name><Value>arn:aws:sqs:us-east-2:628265443624:load_paragraphs.fifo</Value></Attribute><Attribute><Name>ApproximateNumberOfMessages</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesNotVisible</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesDelayed</Name><Value>0</Value></Attribute><Attribute><Name>CreatedTimestamp</Name><Value>1512726847</Value></Attribute><Attribute><Name>LastModifiedTimestamp</Name><Value>1514018314</Value></Attribute><Attribute><Name>VisibilityTimeout</Name><Value>30</Value></Attribute><Attribute><Name>MaximumMessageSize</Name><Value>262144</Value></Attribute><Attribute><Name>MessageRetentionPeriod</Name><Value>345600</Value></Attribute><Attribute><Name>DelaySeconds</Name><Value>0</Value></Attribute><Attribute><Name>ReceiveMessageWaitTimeSeconds</Name><Value>0</Value></Attribute><Attribute><Name>FifoQueue</Name><Value>true</Value></Attribute><Attribute><Name>ContentBasedDeduplication</Name><Value>true</Value></Attribute></GetQueueAttributesResult><ResponseMetadata><RequestId>a63d289a-15b3-5e80-9cbb-7a2236dca83e</RequestId></ResponseMetadata></GetQueueAttributesResponse>
+    http_version: 
+  recorded_at: Sat, 23 Dec 2017 09:26:07 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/628265443624/load_paragraphs.fifo
+    body:
+      encoding: UTF-8
+      string: Action=SendMessage&MessageAttribute.1.Name=shoryuken_class&MessageAttribute.1.Value.DataType=String&MessageAttribute.1.Value.StringValue=LoadParagraphsWorker&MessageBody=%5B%22Index%20of%20Taiwan-related%20articles%22%2C%20%22Outline%20of%20Taiwan%22%2C%20%22List%20of%20tourist%20attractions%20in%20Taiwan%22%2C%20%22List%20of%20wars%20involving%20the%20Republic%20of%20China%22%5D&MessageDeduplicationId=ec641b68c7b0ee70a5b0607096e999c03d4c01a07309e44475df4b83491244b5&MessageGroupId=ShoryukenMessage&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2F628265443624%2Fload_paragraphs.fifo&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.11.0 ruby/2.4.2 x86_64-linux aws-sdk-sqs/1.3.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20171223T092607Z
+      X-Amz-Content-Sha256:
+      - e42d7650f188582c591d1b0ff2d26ca79ed74b81cf69536b8393eea07969dbd4
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIOGLSX27XLPBFHLA/20171223/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=01dca6f0e35050a0922b56fc809332c351ffc7959435db5628f05a736906af3b
+      Content-Length:
+      - '610'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sat, 23 Dec 2017 09:26:07 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '512'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - ecb0fdc6-becb-51bf-b73e-af7e9da4c57e
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>a93cad19-d35c-4e4e-a28b-790463154cb6</MessageId><MD5OfMessageBody>6b3a99c3c80adf0f22dedb21d21702bc</MD5OfMessageBody><MD5OfMessageAttributes>869c219a8251299b99cf150a23654b39</MD5OfMessageAttributes><SequenceNumber>18834333492639215616</SequenceNumber></SendMessageResult><ResponseMetadata><RequestId>ecb0fdc6-becb-51bf-b73e-af7e9da4c57e</RequestId></ResponseMetadata></SendMessageResponse>
+    http_version: 
+  recorded_at: Sat, 23 Dec 2017 09:26:07 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/628265443624/load_paragraphs.fifo
+    body:
+      encoding: UTF-8
+      string: Action=GetQueueAttributes&AttributeName.1=All&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2F628265443624%2Fload_paragraphs.fifo&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.11.0 ruby/2.4.2 x86_64-linux aws-sdk-sqs/1.3.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20171223T093411Z
+      X-Amz-Content-Sha256:
+      - da4882a33173f17acfb36d73e6e7da09d00fcee38cfc72b1bd64cb621f8bcbce
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIOGLSX27XLPBFHLA/20171223/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6e88d3178be67709ed27d15efbf008702e6deda515b97d07a13488602554f88c
+      Content-Length:
+      - '153'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sat, 23 Dec 2017 09:34:11 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1318'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 61c69e25-3c90-588e-881c-cc9d19c3c612
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><GetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueAttributesResult><Attribute><Name>QueueArn</Name><Value>arn:aws:sqs:us-east-2:628265443624:load_paragraphs.fifo</Value></Attribute><Attribute><Name>ApproximateNumberOfMessages</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesNotVisible</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesDelayed</Name><Value>0</Value></Attribute><Attribute><Name>CreatedTimestamp</Name><Value>1512726847</Value></Attribute><Attribute><Name>LastModifiedTimestamp</Name><Value>1514018314</Value></Attribute><Attribute><Name>VisibilityTimeout</Name><Value>30</Value></Attribute><Attribute><Name>MaximumMessageSize</Name><Value>262144</Value></Attribute><Attribute><Name>MessageRetentionPeriod</Name><Value>345600</Value></Attribute><Attribute><Name>DelaySeconds</Name><Value>0</Value></Attribute><Attribute><Name>ReceiveMessageWaitTimeSeconds</Name><Value>0</Value></Attribute><Attribute><Name>FifoQueue</Name><Value>true</Value></Attribute><Attribute><Name>ContentBasedDeduplication</Name><Value>true</Value></Attribute></GetQueueAttributesResult><ResponseMetadata><RequestId>61c69e25-3c90-588e-881c-cc9d19c3c612</RequestId></ResponseMetadata></GetQueueAttributesResponse>
+    http_version: 
+  recorded_at: Sat, 23 Dec 2017 09:34:12 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/628265443624/load_paragraphs.fifo
+    body:
+      encoding: UTF-8
+      string: Action=SendMessage&MessageAttribute.1.Name=shoryuken_class&MessageAttribute.1.Value.DataType=String&MessageAttribute.1.Value.StringValue=LoadParagraphsWorker&MessageBody=%5B%22Index%20of%20Taiwan-related%20articles%22%2C%20%22Outline%20of%20Taiwan%22%2C%20%22List%20of%20tourist%20attractions%20in%20Taiwan%22%2C%20%22List%20of%20wars%20involving%20the%20Republic%20of%20China%22%5D&MessageDeduplicationId=ec641b68c7b0ee70a5b0607096e999c03d4c01a07309e44475df4b83491244b5&MessageGroupId=ShoryukenMessage&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2F628265443624%2Fload_paragraphs.fifo&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.11.0 ruby/2.4.2 x86_64-linux aws-sdk-sqs/1.3.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20171223T093412Z
+      X-Amz-Content-Sha256:
+      - e42d7650f188582c591d1b0ff2d26ca79ed74b81cf69536b8393eea07969dbd4
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIOGLSX27XLPBFHLA/20171223/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=c792380a0ccec7a5a7ffee468e88399c1fa8ff1259598f7dd5ebb5e88e6064af
+      Content-Length:
+      - '610'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sat, 23 Dec 2017 09:34:12 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '512'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - c714dbd4-069f-5ff2-90e2-896c23cbe794
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>3d7d743a-2962-49cd-baff-205ccd5d208d</MessageId><MD5OfMessageBody>6b3a99c3c80adf0f22dedb21d21702bc</MD5OfMessageBody><MD5OfMessageAttributes>869c219a8251299b99cf150a23654b39</MD5OfMessageAttributes><SequenceNumber>18834333616749551616</SequenceNumber></SendMessageResult><ResponseMetadata><RequestId>c714dbd4-069f-5ff2-90e2-896c23cbe794</RequestId></ResponseMetadata></SendMessageResponse>
+    http_version: 
+  recorded_at: Sat, 23 Dec 2017 09:34:12 GMT
 recorded_with: VCR 4.0.0
