@@ -1,2 +1,2 @@
 queues:
-  - https://sqs.us-east-2.amazonaws.com/628265443624/load_paragraphs.fifo	
+  - https://sqs.us-east-2.amazonaws.com/818137434763/load_multiple_topics.fifo	
