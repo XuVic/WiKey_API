@@ -16,7 +16,6 @@ module WiKey
         DataMapper.new(article_data).build_entity
       end
       
-      private 
       def get_raw_data(topic)
         article_data = @gateway.article_data(topic)
         key = article_data['query']['pages'].keys[0]
@@ -44,8 +43,7 @@ module WiKey
           end
           paragraphs
         end
-        
-        private
+  
         def build_catalogs
           html_doc = Nokogiri::HTML(@article_data['extract'])
           catalogs = html_doc.css('h2')
@@ -57,7 +55,7 @@ module WiKey
           article_hash = {}
           article_hash['default'] = []
           catalogs.each do |catalog|
-            break if catalog.text == 'See also'
+            break if catalog.text == 'References'
             article_hash[catalog.text] = []
           end
           article_hash
@@ -69,8 +67,8 @@ module WiKey
            paragraph_hash = build_hash
            key = 'default'
            elements.each do |element|
-             break if element.text == 'See also'
-             if element.name != 'h2' && !element.text.include?("\n") && !element.text.empty?
+             break if element.text == 'References'
+             if element.name != 'h2' && !element.text.gsub("\n",'').empty?
                paragraph_hash[key].push(element.text)
              elsif element.name == 'h2'
                key = element.text

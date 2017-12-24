@@ -35,7 +35,7 @@ module WiKey
             )
           )
           catalogs.each do |catalog|
-            break if catalog.content == 'See also'
+            break if catalog.content == 'References'
             catalog = Entity::Catalog.new(
               name: catalog.content,
               topic: @article_data['title'],

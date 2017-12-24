@@ -46,6 +46,7 @@ module WiKey
       end
       
       def self.article_data(topic)
+        topic.gsub!(' ','_') if topic.include?(' ')
         article_url = wiki_path(topic)
         call_wiki_url(article_url)
       end

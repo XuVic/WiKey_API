@@ -30,4 +30,5 @@ CASSETTES_FOLDER = 'spec/fixtures/cassettes'.freeze
 VCR.configure do |c|
   c.cassette_library_dir = CASSETTES_FOLDER
   c.hook_into :webmock
+  c.ignore_hosts 'sqs.us-east-2.amazonaws.com'
 end

@@ -3,6 +3,7 @@ require_relative 'load_all'
 require 'econfig'
 require 'shoryuken'
 require 'concurrent'
+require 'http'
 
 class LoadParagraphsWorker
   extend Econfig::Shortcut
@@ -20,23 +21,57 @@ class LoadParagraphsWorker
   
   
   def perform(_sqs_msg, worker_request)
-    topics = JSON.parse worker_request
-    articles = concurrent(topics, WiKey::Wiki::ArticleMapper.new(WiKey::Wiki::Api))
-    store_paragraphs(articles)
+    record = JSON.parse worker_request
+    topics = JSON.parse record['topics']
+    concurrent(topics, WiKey::Wiki::ArticleMapper.new(WiKey::Wiki::Api), record['id'])
   end
   
   private
   
-  def store_paragraphs(articles)
-    articles.each do |article|
-      WiKey::Repository::Paragraph.create(article.paragraphs)
+  def store(article)
+    WiKey::Repository::Article.create(article)
+  end
+
+  def concurrent(inputs, datamapper, channel_id)
+    promises = build_promises(inputs, datamapper)
+    execute(promises, channel_id)
+  end
+  
+  def build_promises(inputs, datamapper)
+    inputs.map do |input|
+      Concurrent::Promise.new { datamapper.get_raw_data(input) }
+                        .then {|raw_data| datamapper.build_entity(raw_data)}
+                        .then{|article| store(article)}.
+                        rescue {{error: "#{input} not found."}}
     end
   end
   
-  def concurrent(inputs, datamapper)
-    inputs.map do |input|
-      Concurrent::Promise.new { datamapper.get_raw_data(input) }.then {|raw_data| datamapper.build_entity(raw_data)}.rescue {{error: "#{input} not found."}}
-    end.map(&:execute).map(&:value)
+  def execute(promises, channel_id)
+    m = promises.size
+    n = 1
+    promises.map do |promise|
+      update_progress(channel_id, n/m.to_f)
+      n = n + 1
+      promise.execute.value
+    end
+  end
+  
+
+  def update_progress(channel_id, percentage)
+    percentage = percentage*100
+    publish(channel_id, percentage.to_i.to_s)
+  end
+  
+  
+  def publish(channel, message)
+    puts "Posting progress: #{message} in #{channel}"
+    HTTP.headers(content_type: 'application/json').post(
+          "https://wikeyapi.herokuapp.com/faye",
+          body: {
+            channel: "/#{channel}",
+            data: message
+          }.to_json
+        )
   end
   
 end

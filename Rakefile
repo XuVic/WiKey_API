@@ -122,6 +122,10 @@ namespace :worker do
     task :development => :config do
       sh 'RACK_ENV=development bundle exec shoryuken -r ./workers/load_paragraphs_worker.rb -C ./workers/shoryuken_dev.yml'
     end
+    
+    task :test => :config do
+      sh 'RACK_ENV=test bundle exec shoryuken -r ./workers/load_paragraphs_worker.rb -C ./workers/shoryuken_test.yml'
+    end
   end
   
 end
