@@ -21,11 +21,11 @@ module WiKey
     end
     
     def get_mutliple_topics(inputs)
-      topics = inputs[:article].paragraphs.select {|p| p.catalog == 'See also'}
-      inputs[:topics] = topics[0].content.split("\n")
+      topics = inputs[:article].paragraphs.select_from('See also')
       if topics.empty?
         Left(Result.new(:not_found, 'Topics not found'))
       else
+        inputs[:topics] = topics[0].content.split("\n")
         Right(inputs)
       end
     end
