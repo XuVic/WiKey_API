@@ -19,10 +19,10 @@ module WiKey
            topics = find_result.value.message
            http_response = HttpResponseRepresenter.new(find_result.value)
            response.status = http_response.http_code
-           if http_response.processing?
-             http_response.to_json
-           else
+           if http_response.ok?
              TopicsRepresenter.new(Topics.new(topics)).to_json
+           else
+             http_response.to_json
            end
          end
          
