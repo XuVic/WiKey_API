@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-23T09:52:27+00:00">2017-12-23T09:52:27+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-24T03:33:16+00:00">2017-12-24T03:33:16+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">88.05%</span></span>
+    (<span class="covered_percent"><span class="yellow">87.18%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         41.72
+         40.78
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>66</b> files in total.
-    <b>770</b> relevant lines. 
-    <span class="green"><b>678</b> lines covered</span> and
-    <span class="red"><b>92</b> lines missed </span>
+    <b>788</b> relevant lines. 
+    <span class="green"><b>687</b> lines covered</span> and
+    <span class="red"><b>101</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -82,11 +82,11 @@
       
       <tr>
         <td class="strong"><a href="#de75641ebd374b22e0e28738801d29b5e4eafb05" class="src_link" title="application/controllers/see_also.rb">application/controllers/see_also.rb</a></td>
-        <td class="green strong">92.31 %</td>
-        <td>25</td>
-        <td>13</td>
-        <td>12</td>
-        <td>1</td>
+        <td class="green strong">100.0 %</td>
+        <td>32</td>
+        <td>14</td>
+        <td>14</td>
+        <td>0</td>
         <td>1.6</td>
       </tr>
       
@@ -177,7 +177,7 @@
         <td>21</td>
         <td>21</td>
         <td>0</td>
-        <td>3.5</td>
+        <td>3.3</td>
       </tr>
       
       <tr>
@@ -292,12 +292,12 @@
       
       <tr>
         <td class="strong"><a href="#6972eda3dc375c9a7c2eeeb34d3f76f70192039f" class="src_link" title="application/services/load_multiple_from_wiki.rb">application/services/load_multiple_from_wiki.rb</a></td>
-        <td class="yellow strong">90.0 %</td>
-        <td>53</td>
+        <td class="green strong">93.75 %</td>
+        <td>55</td>
+        <td>32</td>
         <td>30</td>
-        <td>27</td>
-        <td>3</td>
-        <td>13.5</td>
+        <td>2</td>
+        <td>12.7</td>
       </tr>
       
       <tr>
@@ -387,7 +387,7 @@
         <td>16</td>
         <td>15</td>
         <td>1</td>
-        <td>7.9</td>
+        <td>8.1</td>
       </tr>
       
       <tr>
@@ -702,12 +702,12 @@
       
       <tr>
         <td class="strong"><a href="#369537294970b8fd37db3ae93b5482a96b68c6f4" class="src_link" title="workers/load_paragraphs_worker.rb">workers/load_paragraphs_worker.rb</a></td>
-        <td class="red strong">61.54 %</td>
-        <td>56</td>
-        <td>26</td>
-        <td>16</td>
-        <td>10</td>
-        <td>0.6</td>
+        <td class="red strong">48.78 %</td>
+        <td>77</td>
+        <td>41</td>
+        <td>20</td>
+        <td>21</td>
+        <td>0.5</td>
       </tr>
       
     </tbody>
@@ -1224,11 +1224,11 @@
         <div class="source_table" id="de75641ebd374b22e0e28738801d29b5e4eafb05">
   <div class="header">
     <h3>application/controllers/see_also.rb</h3>
-    <h4><span class="green">92.31 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>14</b> relevant lines. 
+      <span class="green"><b>14</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -1292,94 +1292,136 @@
         <li class="covered" data-hits="2" data-linenumber="10">
           <span class="hits">2</span>
           
-          <code class="ruby">         routing.get do </code>
+          <code class="ruby">         request_id = [request.env, request.path, Time.now.to_f].hash</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
-          
-          <code class="ruby">           find_result = LoadMultipleFromWiki.new.call(topic_name)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
-          
-          <code class="ruby">           topics = find_result.value.message</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
-          
-          <code class="ruby">           http_response = HttpResponseRepresenter.new(find_result.value)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="14">
-          <span class="hits">2</span>
-          
-          <code class="ruby">           response.status = http_response.http_code</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
-          
-          <code class="ruby">           if http_response.processing?</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
-          
-          <code class="ruby">             http_response.to_json</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby">           else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
-          
-          <code class="ruby">             TopicsRepresenter.new(Topics.new(topics)).to_json</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby">           end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">         end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">         </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="12">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">         </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="covered" data-hits="2" data-linenumber="13">
+          <span class="hits">2</span>
+          
+          <code class="ruby">         routing.get do </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="14">
+          <span class="hits">2</span>
+          
+          <code class="ruby">           find_result = LoadMultipleFromWiki.new.call(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">             :topic_name =&gt; topic_name,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">             :id =&gt; request_id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">           )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">           </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="19">
+          <span class="hits">2</span>
+          
+          <code class="ruby">           topics = find_result.value.message</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="20">
+          <span class="hits">2</span>
+          
+          <code class="ruby">           http_response = HttpResponseRepresenter.new(find_result.value)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="21">
+          <span class="hits">2</span>
+          
+          <code class="ruby">           response.status = http_response.http_code</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="22">
+          <span class="hits">2</span>
+          
+          <code class="ruby">           if http_response.processing?</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">             http_response.to_json</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
+          <code class="ruby">           else</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">             TopicsRepresenter.new(Topics.new(topics)).to_json</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby">           end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">         end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">         </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">end</code>
@@ -2534,8 +2576,8 @@
           <code class="ruby">    def to_json</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="21">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="6" data-linenumber="21">
+          <span class="hits">6</span>
           
           <code class="ruby">      http_message.to_json</code>
         </li>
@@ -2582,8 +2624,8 @@
           <code class="ruby">    def http_code</code>
         </li>
       
-        <li class="covered" data-hits="26" data-linenumber="29">
-          <span class="hits">26</span>
+        <li class="covered" data-hits="25" data-linenumber="29">
+          <span class="hits">25</span>
           
           <code class="ruby">      HTTP_CODE[@represented.code]</code>
         </li>
@@ -2642,8 +2684,8 @@
           <code class="ruby">    def http_success?</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="39">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="6" data-linenumber="39">
+          <span class="hits">6</span>
           
           <code class="ruby">      http_code &lt; 300</code>
         </li>
@@ -2666,8 +2708,8 @@
           <code class="ruby">    def http_message</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="43">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="6" data-linenumber="43">
+          <span class="hits">6</span>
           
           <code class="ruby">      {msg_or_error =&gt; [@represented.message]}</code>
         </li>
@@ -2690,8 +2732,8 @@
           <code class="ruby">    def msg_or_error</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="47">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="6" data-linenumber="47">
+          <span class="hits">6</span>
           
           <code class="ruby">      http_success? ? :message : :error</code>
         </li>
@@ -4263,11 +4305,11 @@
         <div class="source_table" id="6972eda3dc375c9a7c2eeeb34d3f76f70192039f">
   <div class="header">
     <h3>application/services/load_multiple_from_wiki.rb</h3>
-    <h4><span class="yellow">90.0 %</span> covered</h4>
+    <h4><span class="green">93.75 %</span> covered</h4>
     <div>
-      <b>30</b> relevant lines. 
-      <span class="green"><b>27</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>32</b> relevant lines. 
+      <span class="green"><b>30</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -4349,244 +4391,256 @@
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">    def find_article(topic_name)</code>
+          <code class="ruby">    def find_article(inputs)</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="14">
           <span class="hits">2</span>
           
-          <code class="ruby">      article = Repository::Article.find(topic_name)</code>
+          <code class="ruby">      article = Repository::Article.find(inputs[:topic_name])</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="15">
           <span class="hits">2</span>
           
+          <code class="ruby">      inputs[:article] = article</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="16">
+          <span class="hits">2</span>
+          
           <code class="ruby">      if article.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="16">
+        <li class="missed" data-hits="0" data-linenumber="17">
           
           
           <code class="ruby">        Left(Result.new(:not_found, &#39;Topic not found.&#39;))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
+        <li class="covered" data-hits="2" data-linenumber="19">
           <span class="hits">2</span>
           
-          <code class="ruby">        Right(article)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        Right(inputs)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="22">
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
-          <code class="ruby">    def get_mutliple_topics(article)</code>
+          <code class="ruby">    def get_mutliple_topics(inputs)</code>
         </li>
       
-        <li class="covered" data-hits="350" data-linenumber="23">
+        <li class="covered" data-hits="350" data-linenumber="24">
           <span class="hits">350</span>
           
-          <code class="ruby">      topics = article.paragraphs.select {|p| p.catalog == &#39;See also&#39;}</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="24">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      topics = topics[0].content.split(&quot;\n&quot;)</code>
+          <code class="ruby">      topics = inputs[:article].paragraphs.select {|p| p.catalog == &#39;See also&#39;}</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="25">
           <span class="hits">2</span>
           
+          <code class="ruby">      inputs[:topics] = topics[0].content.split(&quot;\n&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="26">
+          <span class="hits">2</span>
+          
           <code class="ruby">      if topics.empty?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
+        <li class="missed" data-hits="0" data-linenumber="27">
           
           
           <code class="ruby">        Left(Result.new(:not_found, &#39;Topics not found&#39;))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="28">
+        <li class="covered" data-hits="2" data-linenumber="29">
           <span class="hits">2</span>
           
-          <code class="ruby">        Right(topics)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        Right(inputs)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
-          <code class="ruby">    def db_exist?(topics)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="33">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      record = []</code>
+          <code class="ruby">    def db_exist?(inputs)</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="34">
           <span class="hits">2</span>
           
-          <code class="ruby">      topics.each do |topic|</code>
+          <code class="ruby">      record = []</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="35">
+        <li class="covered" data-hits="2" data-linenumber="35">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      inputs[:topics].each do |topic|</code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="36">
           <span class="hits">8</span>
           
           <code class="ruby">        record.push(WiKey::Repository::Topic.find_by_name(topic))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="37">
+        <li class="covered" data-hits="10" data-linenumber="38">
           <span class="hits">10</span>
           
           <code class="ruby">      record.select! {|r| r!=nil }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">  </code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
+        <li class="covered" data-hits="2" data-linenumber="40">
           <span class="hits">2</span>
           
           <code class="ruby">      if !record.empty?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
-          
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
           
           <code class="ruby">        Left(Result.new(:ok, record))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="42">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="43">
+          <span class="hits">1</span>
           
-          <code class="ruby">        Right(topics)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="43">
-          
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        Right(inputs)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="46">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def call_work(topics)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="47">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      LoadParagraphsWorker.perform_async(topics.to_s)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="48">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      Right(Result.new(:processing, &quot;Storing....&quot;))</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="49">
-          
-          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="47">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def call_work(inputs)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      record = {:id =&gt; inputs[:id], :topics =&gt; inputs[:topics].to_s}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      LoadParagraphsWorker.perform_async(record.to_json)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Right(Result.new(:processing, &quot;Storing....&quot;))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">end</code>
@@ -6311,8 +6365,8 @@
           <code class="ruby">          </code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="31">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="20" data-linenumber="31">
+          <span class="hits">20</span>
           
           <code class="ruby">        Entity::Topic.new(</code>
         </li>
@@ -10484,11 +10538,11 @@
         <div class="source_table" id="369537294970b8fd37db3ae93b5482a96b68c6f4">
   <div class="header">
     <h3>workers/load_paragraphs_worker.rb</h3>
-    <h4><span class="red">61.54 %</span> covered</h4>
+    <h4><span class="red">48.78 %</span> covered</h4>
     <div>
-      <b>26</b> relevant lines. 
-      <span class="green"><b>16</b> lines covered</span> and
-      <span class="red"><b>10</b> lines missed.</span>
+      <b>41</b> relevant lines. 
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>21</b> lines missed.</span>
     </div>
   </div>
   
@@ -10525,94 +10579,94 @@
           <code class="ruby">require &#39;concurrent&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;http&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class LoadParagraphsWorker</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">  extend Econfig::Shortcut</code>
+          <code class="ruby">class LoadParagraphsWorker</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">  Econfig.env = ENV[&#39;RACK_ENV&#39;] || &#39;development&#39;</code>
+          <code class="ruby">  extend Econfig::Shortcut</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
+          <code class="ruby">  Econfig.env = ENV[&#39;RACK_ENV&#39;] || &#39;development&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
           <code class="ruby">  Econfig.root = File.expand_path(&#39;..&#39;, File.dirname(__FILE__))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
+        <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
           <code class="ruby">  Shoryuken.sqs_client = Aws::SQS::Client.new(</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby">    access_key_id: config.AWS_ACCESS_KEY_ID,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">    secret_access_key: config.AWS_SECRET_ACCESS_KEY,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">    region: config.AWS_REGION</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">  )</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">  </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  include Shoryuken::Worker</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">  shoryuken_options queue: config.P_QUEUE_URL, auto_delete: true</code>
+          <code class="ruby">  include Shoryuken::Worker</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  </code>
+          <code class="ruby">  shoryuken_options queue: config.P_QUEUE_URL, auto_delete: true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
@@ -10621,34 +10675,34 @@
           <code class="ruby">  </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
           <code class="ruby">  def perform(_sqs_msg, worker_request)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
-          
-          <code class="ruby">    topics = JSON.parse worker_request</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">    articles = concurrent(topics, WiKey::Wiki::ArticleMapper.new(WiKey::Wiki::Api))</code>
+          <code class="ruby">    record = JSON.parse worker_request</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">    store(articles)</code>
+          <code class="ruby">    topics = JSON.parse record[&#39;topics&#39;]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="missed" data-hits="0" data-linenumber="26">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    concurrent(topics, WiKey::Wiki::ArticleMapper.new(WiKey::Wiki::Api), record[&#39;id&#39;])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
@@ -10678,154 +10732,280 @@
         <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
-          <code class="ruby">  def store(articles)</code>
+          <code class="ruby">  def store(article)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="32">
           
           
-          <code class="ruby">    articles.select! {|article| article.class == WiKey::Entity::Article }</code>
+          <code class="ruby">    WiKey::Repository::Article.create(article)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
-          
-          
-          <code class="ruby">    articles.each do |article|</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="34">
-          
-          
-          <code class="ruby">        WiKey::Repository::Article.create(article)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="33">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">  def concurrent(inputs, datamapper)</code>
+          <code class="ruby">  def concurrent(inputs, datamapper, channel_id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="36">
+          
+          
+          <code class="ruby">    promises = build_promises(inputs, datamapper)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="37">
+          
+          
+          <code class="ruby">    execute(promises, channel_id)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">    inputs.map do |input|</code>
+          <code class="ruby">  </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      Concurrent::Promise.new { datamapper.get_raw_data(input) }.then {|raw_data| datamapper.build_entity(raw_data)}.rescue {{error: &quot;#{input} not found.&quot;}}</code>
+          <code class="ruby">  def build_promises(inputs, datamapper)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="41">
           
           
-          <code class="ruby">    end.map(&amp;:execute).map(&amp;:value)</code>
+          <code class="ruby">    inputs.map do |input|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="missed" data-hits="0" data-linenumber="42">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">      Concurrent::Promise.new { datamapper.get_raw_data(input) }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="missed" data-hits="0" data-linenumber="43">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby">                        .then {|raw_data| datamapper.build_entity(raw_data)}</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="44">
           
-          <code class="ruby">  def publish(channel, message)</code>
+          
+          <code class="ruby">                        .then{|article| store(article)}.</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="45">
           
           
-          <code class="ruby">    puts &quot;Posting progress: #{message}&quot;</code>
+          <code class="ruby">                        rescue {{error: &quot;#{input} not found.&quot;}}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby">    HTTP.headers(content_type: &#39;application/json&#39;)</code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="47">
-          
-          
-          <code class="ruby">        .post(</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="48">
-          
-          
-          <code class="ruby">          &quot;#https://wikeyapi.herokuapp.com/faye&quot;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="49">
-          
-          
-          <code class="ruby">          body: {</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="50">
-          
-          
-          <code class="ruby">            channel: &quot;/#{channel}&quot;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="51">
-          
-          
-          <code class="ruby">            data: message</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="52">
-          
-          
-          <code class="ruby">          }.to_json</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="53">
-          
-          
-          <code class="ruby">        )</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">  </code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def execute(promises, channel_id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="50">
+          
+          
+          <code class="ruby">    m = promises.size</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="51">
+          
+          
+          <code class="ruby">    n = 1</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="52">
+          
+          
+          <code class="ruby">    promises.map do |promise|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="53">
+          
+          
+          <code class="ruby">      update_progress(channel_id, n/m.to_f)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="54">
+          
+          
+          <code class="ruby">      n = n + 1</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="55">
+          
+          
+          <code class="ruby">      promise.execute.value</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update_progress(channel_id, percentage)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="61">
+          
+          
+          <code class="ruby">    percentage = percentage*100</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="62">
+          
+          
+          <code class="ruby">    publish(channel_id, percentage.to_i.to_s)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def publish(channel, message)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">    puts &quot;Posting progress: #{message} in #{channel}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">    HTTP.headers(content_type: &#39;application/json&#39;).post(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">          &quot;https://wikeyapi.herokuapp.com/faye&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">          body: {</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">            channel: &quot;/#{channel}&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">            data: message</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">          }.to_json</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">        )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
           
           
           <code class="ruby">end</code>
