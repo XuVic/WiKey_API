@@ -21,7 +21,7 @@ module WiKey
     end
     
     def get_mutliple_topics(inputs)
-      topics = inputs[:article].paragraphs.select_from('See also')
+      topics = inputs[:article].select_from('See also')
       if topics.empty?
         Left(Result.new(:not_found, 'Topics not found'))
       else
