@@ -3,15 +3,10 @@ module WiKey
   class Api < Roda
   
     route('topics') do |routing|
+      values = {:route => 'topics'}
       routing.get do
-        topics = FindDatabaseTopic.all
-        http_response = HttpResponseRepresenter.new(topics.value)
-        response.status = http_response.http_code
-        if topics.success?
-          TopicsRepresenter.new(Topics.new(topics.value.message)).to_json
-        else
-          http_response.to_json
-        end
+        find_result = FindDatabaseTopic.all
+        represent_response(find_result, TopicsRepresenter, values)
       end
     end
   end

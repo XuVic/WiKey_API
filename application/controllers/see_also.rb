@@ -3,7 +3,7 @@ module WiKey
   class Api < Roda
   
     route('see_also') do |routing|
-    
+      values = {:route => 'see_also'}
       routing.on String do |topic_name|
          topic_name = normalize(topic_name)
          
@@ -11,19 +11,13 @@ module WiKey
          
          
          routing.get do 
-           find_result = LoadMultipleFromWiki.new.call(
+           service_result = LoadMultipleFromWiki.new.call(
              :topic_name => topic_name,
              :id => request_id
            )
            
-           topics = find_result.value.message
-           http_response = HttpResponseRepresenter.new(find_result.value)
-           response.status = http_response.http_code
-           if http_response.ok?
-             TopicsRepresenter.new(Topics.new(topics)).to_json
-           else
-             http_response.to_json
-           end
+           represent_response(service_result, TopicsRepresenter, values)
+
          end
          
       end

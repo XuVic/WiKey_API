@@ -29,6 +29,10 @@ module WiKey
       HTTP_CODE[@represented.code]
     end
     
+    def created?
+      @represented.code == :created
+    end
+    
     def ok?
       @represented.code == :ok
     end

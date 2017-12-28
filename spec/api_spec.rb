@@ -98,7 +98,8 @@ describe 'Tests WiKey library' do
       it 'HAPPY : Should get mulitple topics with default paragraphs' do
         get API_VER + "/see_also/#{TOPIC_NAME}"
         _(last_response.status).must_equal 202
-        
+        id = JSON.parse last_response.body
+        _(id['id']).must_be_kind_of Integer
         5.times { sleep(1); print '.' }
         
         get API_VER + "/see_also/#{TOPIC_NAME}"
