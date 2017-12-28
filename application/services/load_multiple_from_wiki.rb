@@ -47,7 +47,7 @@ module WiKey
     def call_work(inputs)
       record = {:id => inputs[:id], :topics => inputs[:topics].to_s}
       LoadParagraphsWorker.perform_async(record.to_json)
-      Right(Result.new(:processing, "Storing...."))
+      Right(Result.new(:processing, {id: inputs[:id]}))
     end
     
     
