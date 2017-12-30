@@ -1,33 +1,36 @@
 require 'dry-struct'
-require 'epitome'
+require 'ots'
 
 module WiKey
 
   module Entity
     
-    class Summarize
+    class Summary
       
       def initialize(paragraph)
         @paragraph = paragraph
       end
       
-      def summarize
-        corpus = build_corpus(build_document)
-        corpus.summary(length=2)
+      def build_paragraph
+        paragraphs = ''
+        summaries.each do |sentence|
+          paragraphs << sentence[:sentence]
+        end
+        paragraphs
       end
       
-      private
-      def build_document
-        collection = []
-        @paragraph.split('.').each do |sentence|
-          collection.push(Epitome::Document.new(sentence))
-        end
-        collection
+      def ots
+        OTS.parse(@paragraph)
       end
-      def build_corpus(document_collection)
-        corpus = Epitome::Corpus.new(document_collection)
-        corpus
+      
+      def summaries
+        ots.summarize(percent: 50)
       end
+      
+      def key_noun
+        ots.topics
+      end
+      
       
     end
   end

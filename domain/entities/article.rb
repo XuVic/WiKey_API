@@ -18,9 +18,9 @@ module WiKey
       def summaries(catalog_name)
         paragraphs = select_from(catalog_name)
         paragraphs.map do |paragraph|
-          record = Entity::Summarize.new(paragraph.content)
+          summary = Entity::Summary.new(paragraph.content)
           Entity::Paragraph.new(
-            content: record.summarize,
+            content: summary.build_paragraph,
             catalog: catalog_name,
             topic: @topic.name
           )

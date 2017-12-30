@@ -126,6 +126,7 @@ GEM
     multi_json (1.12.2)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    ots (0.5.4)
     parser (2.4.0.2)
       ast (~> 2.3)
     path_expander (1.0.2)
@@ -223,6 +224,7 @@ DEPENDENCIES
   minitest-rg
   multi_json
   nokogiri
+  ots
   pg
   pry
   puma

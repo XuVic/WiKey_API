@@ -10,6 +10,7 @@ gem 'faye', '~> 1'
 gem 'summarize'
 gem 'epitome'
 gem 'graph-rank'
+gem 'ots'
 
 #Networking gems
 gem 'http'
