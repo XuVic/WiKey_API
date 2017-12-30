@@ -68,7 +68,7 @@ describe 'Tests WiKey library' do
         
         response_data = JSON.parse last_response.body
         _(response_data.keys.count).must_equal 3
-        _(response_data['paragraphs'][0]['catalog']).must_equal 'default'
+        _(response_data['paragraphs'][0]['catalog']).must_equal 'Default'
       end
       it 'SAD : Topic not in DB' do
         get API_VER + '/topic/gogoro'

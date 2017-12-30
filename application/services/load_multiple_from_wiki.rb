@@ -1,9 +1,11 @@
 require 'dry/transaction'
+require_relative '../../modules/normalize'
 
 module WiKey
   
   class LoadMultipleFromWiki
     include Dry::Transaction
+    include Normalize
     
     step :find_article
     step :get_mutliple_topics
@@ -34,7 +36,7 @@ module WiKey
     def db_exist?(inputs)
       record = []
       inputs[:topics].each do |topic|
-        record.push(WiKey::Repository::Topic.find_by_name(topic))
+        record.push(WiKey::Repository::Topic.find_by_name(normalize(topic)))
       end
       record.select! {|r| r!=nil }
   

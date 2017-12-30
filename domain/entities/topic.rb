@@ -8,6 +8,12 @@ module WiKey
       attribute :name, Types::Strict::String
       attribute :rank, Types::Strict::Int
     
+      def catalogs
+        WiKey::Database::TopicOrm.first(name: @name).catalogs.map do |db_record|
+          WiKey::Repository::Catalog.rebuild_entity(db_record)
+        end
+      end
+      
       
       def rankup
         @name.gsub!("_"," ") if @name.include?("_")

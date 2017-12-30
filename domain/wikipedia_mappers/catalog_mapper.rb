@@ -30,7 +30,7 @@ module WiKey
           catalogs_array = []
           catalogs_array.push(
             Entity::Catalog.new(
-              name: 'default',
+              name: 'Default',
               topic: @article_data['title']
             )
           )

@@ -53,7 +53,7 @@ module WiKey
         def build_hash
           catalogs = build_catalogs
           article_hash = {}
-          article_hash['default'] = []
+          article_hash['Default'] = []
           catalogs.each do |catalog|
             break if catalog.text == 'References'
             article_hash[catalog.text] = []
@@ -65,7 +65,7 @@ module WiKey
            html_doc = Nokogiri::HTML(@article_data['extract'])
            elements = html_doc.children[1].children[0].children
            paragraph_hash = build_hash
-           key = 'default'
+           key = 'Default'
            elements.each do |element|
              break if element.text == 'References'
              if element.name != 'h2' && !element.text.gsub("\n",'').empty?

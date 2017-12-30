@@ -11,7 +11,7 @@ module WiKey
         routing.get do
           find_result = FindDatabaseArticle.new.call(
             gateway: WiKey::Wiki::Api, 
-            topic: topic_name.capitalize
+            topic: topic_name
           )
           represent_response(find_result, ArticleRepresenter, values)
         end

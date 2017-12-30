@@ -1,13 +1,11 @@
+require_relative '../../modules/normalize.rb'
+
 module WiKey
 
 
   class Api < Roda
     
-    def normalize(string)
-      string.gsub!('%20', ' ')
-      string.gsub('_', ' ')
-    end
-    
+    include Normalize
       
     def represent_response(result, success_representer, values)
       http_response = HttpResponseRepresenter.new(result.value)
@@ -27,7 +25,7 @@ module WiKey
       entity = result.value.message
       case values[:route]
       when 'topic'
-        Article.new(entity.topic, entity.catalogs, entity.summaries('default'))
+        Article.new(entity.topic, entity.catalogs, entity.summaries('Default'))
       when 'topics'
         Topics.new(entity)
       when 'see_also'

@@ -24,24 +24,27 @@ module WiKey
     end
     
     def catalog_exist?(input)
-      if !input[:catalog].nil?
-        catalogs = Repository::Catalog.find_by_topic(input[:topic].name)
-        if catalogs.select{|catalog| catalog.name == input[:catalog]}.empty?
-          Left(Result.new(:not_found, 'Could not find stored article'))
+      if !input[:catalog].nil? 
+        error = true
+        input[:topic].catalogs.each do |catalog|
+          error = false if catalog.name == input[:catalog]
+        end
+        if error
+          Left(Result.new(:not_found, "#{input[:catalog]} not found")) 
         else
           Right(input)
-        end  
+        end
       else
         Right(input)
       end
     end
     
     def db_exist?(input)
-      article = WiKey::Repository::Article.find(input[:topic].name)
-      if article.nil?
+      paragraph = Repository::Paragraph.find_by_topic(input[:topic].name)
+      if paragraph.nil?
         Right(input)
       else
-        Left(Result.new(:ok, article))
+        Left(Result.new(:ok, Repository::Article.find(input[:topic].name)))
       end
     end
     

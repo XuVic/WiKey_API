@@ -10,7 +10,8 @@ module WiKey
         values = {:route => 'paragraphs', :catalog => catalog_name}
         routing.get do
           find_result = FindDatabaseArticle.new.call(
-            topic: topic_name.capitalize,
+            topic: topic_name,
+            catalog: catalog_name,
             gateway: WiKey::Wiki::Api
           )
           represent_response(find_result, ArticleRepresenter, values)
