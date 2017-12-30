@@ -30,7 +30,8 @@ module WiKey
           article_data = @response['query']['pages'][key]
           if !article_data['extract'].empty?
             html_doc = Nokogiri::HTML(article_data['extract']) 
-            return 003 if html_doc.children[1].text.include?('refer to:')
+            first_text = html_doc.children[1].text
+            return 003 if first_text.include?('refer to:') || first_text.include?('ambiguous term')
           end
           return 003 if article_data['extract'].empty?
           return 000

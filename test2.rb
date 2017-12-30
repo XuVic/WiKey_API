@@ -8,7 +8,7 @@ def concurrent(inputs)
   m = inputs.size
   n = 1
   promises = inputs.map do |input|
-    Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.then{|article| store(article)}.rescue {{error: "#{input} not found."}}
+    Concurrent::Promise.new { get_raw_data(input) }.then {|raw_data| build_entity(input,raw_data)}.then{|article| store(article)}.rescue {{error: "#{input[:topic]} not found."}}
   end
   promises.map do |promise|
     puts n/m.to_f

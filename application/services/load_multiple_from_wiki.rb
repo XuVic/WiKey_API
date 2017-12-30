@@ -23,11 +23,12 @@ module WiKey
     def get_mutliple_topics(inputs)
       topics = inputs[:article].select_from('See also')
       if topics.empty?
-        Left(Result.new(:not_found, 'Topics not found'))
+        summary = WiKey::Entity::Summary.new(inputs[:article].select_from('default')[0].content)
+        inputs[:topics] = summary.key_noun
       else
         inputs[:topics] = topics[0].content.split("\n")
-        Right(inputs)
       end
+      Right(inputs)
     end
     
     def db_exist?(inputs)

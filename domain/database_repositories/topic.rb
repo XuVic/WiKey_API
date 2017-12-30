@@ -13,7 +13,7 @@ module WiKey
       end
       
       def self.find_by_name(topic_name)
-        db_topic = Database::TopicOrm.first(name: topic_name)
+        db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
         rebuild_entity(db_topic)
       end
       
