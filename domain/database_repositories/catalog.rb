@@ -10,7 +10,7 @@ module WiKey
       end
       
       def self.find_by_topic(topic_name)
-        db_topic = Database::TopicOrm.first(name: topic_name.capitalize)
+        db_topic = Database::TopicOrm.first(name: topic_name)
         return nil unless db_topic
         db_catalog = WiKey::Database::CatalogOrm.where(topic_id: db_topic.id).all 
         db_catalog.map {|db_record| rebuild_entity(db_record)}
