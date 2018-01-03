@@ -40,9 +40,9 @@ module WiKey
       record.select! {|r| r!=nil }
       Right(inputs)
       #if !record.empty?
-      #  Left(Result.new(:ok, record))
+        #Left(Result.new(:ok, record))
       #else
-      #  Right(inputs)
+       # Right(inputs)
       #end
     end
     
