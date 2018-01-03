@@ -25,7 +25,7 @@ module WiKey
     def get_mutliple_topics(inputs)
       topics = inputs[:article].select_from('See also')
       if topics.empty?
-        summary = WiKey::Entity::Summary.new(inputs[:article].select_from('default')[0].content)
+        summary = WiKey::Entity::Summary.new(inputs[:article].select_from('Default')[0].content)
         inputs[:topics] = summary.key_noun
       else
         inputs[:topics] = topics[0].content.split("\n")
@@ -36,7 +36,7 @@ module WiKey
     def db_exist?(inputs)
       record = []
       inputs[:topics].each do |topic|
-        record.push(WiKey::Repository::Topic.find_by_name(topic))
+        record.push(WiKey::Repository::Topic.find_by_name(normalize(topic)))
       end
       record.select! {|r| r!=nil }
   
