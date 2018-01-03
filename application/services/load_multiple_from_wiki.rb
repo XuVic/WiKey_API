@@ -39,11 +39,11 @@ module WiKey
       end
       record.select! {|r| r!=nil }
       Right(inputs)
-      #if !record.empty?
-        #Left(Result.new(:ok, record))
-      #else
-       # Right(inputs)
-      #end
+      if !record.empty?
+        Left(Result.new(:ok, record))
+      else
+        Right(inputs)
+      end
     end
     
     def call_work(inputs)
