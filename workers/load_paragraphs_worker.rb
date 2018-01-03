@@ -50,7 +50,7 @@ class LoadParagraphsWorker
     m = promises.size
     n = 1
     promises.map do |promise|
-      1.times { sleep(1); }
+      1.times { sleep(1.0/2.0); }
       update_progress(channel_id, n/m.to_f)
       n = n + 1
       promise.execute.value
