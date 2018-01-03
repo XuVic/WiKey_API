@@ -38,12 +38,12 @@ module WiKey
         record.push(WiKey::Repository::Topic.find_by_name(topic))
       end
       record.select! {|r| r!=nil }
-  
-      if !record.empty?
-        Left(Result.new(:ok, record))
-      else
-        Right(inputs)
-      end
+      Right(inputs)
+      #if !record.empty?
+      #  Left(Result.new(:ok, record))
+      #else
+      #  Right(inputs)
+      #end
     end
     
     def call_work(inputs)
