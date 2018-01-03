@@ -36,7 +36,7 @@ module WiKey
     def db_exist?(inputs)
       record = []
       inputs[:topics].each do |topic|
-        record.push(WiKey::Repository::Topic.find_by_name(normalize(topic)))
+        record.push(WiKey::Repository::Topic.find_by_name(topic))
       end
       record.select! {|r| r!=nil }
   
