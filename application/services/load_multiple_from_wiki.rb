@@ -25,7 +25,7 @@ module WiKey
       topics = inputs[:article].select_from('See also')
       if topics.empty?
         summary = WiKey::Entity::Summary.new(inputs[:article].select_from('Default')[0].content)
-        inputs[:topics] = summary.key_noun.map {|n| n.capitalize}
+        inputs[:topics] = summary.key_noun.map {|n| n.capitalize }.select {|n| n != inputs[:article].topic.name}
       else
         inputs[:topics] = topics[0].content.split("\n")
       end
