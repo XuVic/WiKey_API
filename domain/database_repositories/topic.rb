@@ -1,8 +1,11 @@
+require_relative '../../modules/normalize'
+
 module WiKey
 
   module Repository
     
     class Topic
+      include Normalize
       
       def self.all
         Database::TopicOrm.all.map {|db_topic| rebuild_entity(db_topic)}
@@ -13,7 +16,7 @@ module WiKey
       end
       
       def self.find_by_name(topic_name)
-        db_topic = Database::TopicOrm.first(name: topic_name)
+        db_topic = Database::TopicOrm.first(name: normalize(topic_name))
         rebuild_entity(db_topic)
       end
       
