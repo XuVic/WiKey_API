@@ -11,10 +11,10 @@ module WiKey
     
     def count(top_n)
       n = Repository::Topic.all.count
-      if n > 3
+      if n > top_n
         Right(top_n)
       else
-        Left(Result.new(:not_found, 'Topics lower five.'))
+        Left(Repository::Topic.all)
       end
     end
     

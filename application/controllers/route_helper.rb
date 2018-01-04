@@ -25,6 +25,7 @@ module WiKey
       entity = result.value.message
       case values[:route]
       when 'topic'
+        entity.topic.rankup
         Article.new(entity.topic, entity.catalogs, entity.summaries('Default'))
       when 'topics'
         Topics.new(entity)

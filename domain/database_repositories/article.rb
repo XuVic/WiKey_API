@@ -19,10 +19,20 @@ module WiKey
       
       def self.rebuild_entity(db_record)
         return nil unless db_record 
+        elements = rebuild_element(db_record)
+        Entity::Article.new(
+          topic: elements[:topic],
+          catalogs: elements[:catalogs],
+          paragraphs: elements[:paragraphs]
+        )
+      end
+      
+      private 
+    
+      def self.rebuild_element(db_record)
         catalogs = db_record.catalogs.map do |db_catalog|
           Catalog.rebuild_entity(db_catalog)
         end
-        
         if db_record.paragraphs.empty?
           paragraphs = Wiki::ParagraphMapper.new(WiKey::Wiki::Api).load(db_record.name)
         else
@@ -30,14 +40,9 @@ module WiKey
             Paragraph.rebuild_entity(db_paragraph)
           end  
         end
-        
-    
-        Entity::Article.new(
-          topic: Topic.rebuild_entity(db_record),
-          catalogs: catalogs,
-          paragraphs: paragraphs
-        )
+        {:topic => Topic.rebuild_entity(db_record), :catalogs => catalogs, :paragraphs => paragraphs}
       end
+      
     end
   end
 end
