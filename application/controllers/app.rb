@@ -12,7 +12,7 @@ module WiKey
    require_relative 'topic'
    require_relative 'paragraphs'
    require_relative 'summaries'
-   require_relative 'store_hot_paragraphs'
+   require_relative 'hot_topics'
    require_relative 'see_also'
    
    route do |routing|

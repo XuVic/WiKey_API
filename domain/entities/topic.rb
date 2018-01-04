@@ -19,6 +19,7 @@ module WiKey
         @name.gsub!("_"," ") if @name.include?("_")
         topic = Database::TopicOrm.first(name: @name)
         topic.update(search_times: topic.search_times + 1)
+        set_rank(topic.search_times)
       end
       
       def set_rank(rank)
