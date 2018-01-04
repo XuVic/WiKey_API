@@ -25,15 +25,10 @@ module WiKey
         db_topic = Database::TopicOrm.first(name: entities[0].topic)
         db_catalog = Database::CatalogOrm.first(name: entities[0].catalog)
         db_paragraphs = entities.map do |entity|
-          db_catalog = Database::CatalogOrm.first(name: entity.catalog) if db_catalog.name != entity.catalog
-          db_paragraph = Database::ParagraphOrm.new(content: entity.content)
-          db_paragraph.topic = db_topic
-          db_paragraph.catalog = db_catalog
-          db_paragraph.save
+          save_db_data(entity, db_topic, db_catalog)
         end
         
         db_paragraphs.map {|db_paragraph| rebuild_entity(db_paragraph)}
-        
       end
       
       def self.rebuild_entity(db_record)
@@ -44,6 +39,16 @@ module WiKey
           catalog: db_record.catalog.name,
           topic: db_record.topic.name
         )
+      end
+      
+      private 
+      
+      def self.save_db_data(entity, db_topic, db_catalog)
+        db_catalog = Database::CatalogOrm.first(name: entity.catalog) if db_catalog.name != entity.catalog
+        db_paragraph = Database::ParagraphOrm.new(content: entity.content)
+        db_paragraph.topic = db_topic
+        db_paragraph.catalog = db_catalog
+        db_paragraph.save
       end
       
     end

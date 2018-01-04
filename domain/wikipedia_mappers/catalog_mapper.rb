@@ -20,13 +20,14 @@ module WiKey
       end
       
       class DataMapper
-      
+        
         def initialize(article_data)
           @article_data = article_data
+          @parse = Parse.new(article_data)
         end
         
         def build_entity
-          catalogs = build_catalogs
+          catalogs = @parse.catalogs
           catalogs_array = []
           catalogs_array.push(
             Entity::Catalog.new(
@@ -44,13 +45,7 @@ module WiKey
           end
           catalogs_array
         end
-        
-        private
-        def build_catalogs
-          html_doc = Nokogiri::HTML(@article_data['extract'])
-          catalogs = html_doc.css('h2')
-          catalogs
-        end
+
         
       end
     end
