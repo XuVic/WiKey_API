@@ -15,12 +15,12 @@ module WiKey
         @paragraphs.select {|p| p.catalog == catalog_name}
       end
     
-      def summaries(catalog_name)
+      def summaries(catalog_name, n)
         paragraphs = select_from(catalog_name)
         paragraphs.map do |paragraph|
           summary = Entity::Summary.new(paragraph.content)
           Entity::Paragraph.new(
-            content: summary.build_paragraph,
+            content: summary.build_paragraph(n),
             catalog: catalog_name,
             topic: @topic.name
           )

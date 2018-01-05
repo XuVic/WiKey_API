@@ -2,12 +2,12 @@ module WiKey
 
   class Api < Roda
     
-    route('summaries') do |routing|
-    
-      routing.on String, String do |topic_name, catalog_name|
+    route('summaries_percent') do |routing|
+      
+      routing.on String, String, String do |topic_name, catalog_name, percent|
         topic_name = normalize(topic_name)
         catalog_name = normalize(catalog_name)
-        values = {:route => 'summaries', :catalog => catalog_name, :percent => 50}
+        values = {:route => 'summaries', :catalog => catalog_name, :percent => percent}
         routing.get do
           find_result = FindDatabaseArticle.new.call(
             gateway: WiKey::Wiki::Api, 
@@ -18,5 +18,7 @@ module WiKey
       end
       
     end
+    
   end
+
 end

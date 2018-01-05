@@ -7,8 +7,8 @@ module WiKey
     include Dry::Transaction
     
     step :find_article
-    step :get_mutliple_topics
-    step :db_exist?
+    step :get_relative_topics
+    step :topics_in_db?
     step :call_work
     
     def find_article(inputs)
@@ -21,7 +21,7 @@ module WiKey
       end
     end
     
-    def get_mutliple_topics(inputs)
+    def get_relative_topics(inputs)
       topics = inputs[:article].select_from('See also')
       if topics.empty?
         summary = WiKey::Entity::Summary.new(inputs[:article].select_from('Default')[0].content)
@@ -32,7 +32,7 @@ module WiKey
       Right(inputs)
     end
     
-    def db_exist?(inputs)
+    def topics_in_db?(inputs)
       record = []
       inputs[:topics].each do |topic|
         record.push(WiKey::Repository::Topic.find_by_name(topic))

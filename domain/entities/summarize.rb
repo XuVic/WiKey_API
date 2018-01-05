@@ -11,9 +11,9 @@ module WiKey
         @paragraph = paragraph
       end
       
-      def build_paragraph
+      def build_paragraph(n)
         paragraphs = ''
-        summaries.each do |sentence|
+        summaries(n).each do |sentence|
           paragraphs << sentence[:sentence]
         end
         paragraphs
@@ -23,8 +23,8 @@ module WiKey
         OTS.parse(@paragraph)
       end
       
-      def summaries
-        ots.summarize(percent: 50)
+      def summaries(n)
+        ots.summarize(percent: n.to_i)
       end
       
       def key_noun
