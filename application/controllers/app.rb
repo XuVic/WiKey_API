@@ -14,6 +14,7 @@ module WiKey
    require_relative 'summaries'
    require_relative 'hot_topics'
    require_relative 'see_also'
+   require_relative 'summaries_percent'
    
    route do |routing|
     app = Api

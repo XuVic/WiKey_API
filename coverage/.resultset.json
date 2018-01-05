@@ -136,32 +136,18 @@
         8,
         null,
         10,
-<<<<<<< HEAD
-        2,
-        2,
-        0,
-        null,
-        2,
-=======
         2,
         2,
         1,
         null,
         1,
->>>>>>> refactor
         null,
         null,
         null,
         1,
-<<<<<<< HEAD
-        2,
-        2,
-        2,
-=======
         1,
         1,
         1,
->>>>>>> refactor
         null,
         null,
         null,
@@ -448,7 +434,7 @@
         null,
         null,
         1,
-        7,
+        6,
         null,
         null,
         1,
@@ -456,7 +442,7 @@
         null,
         null,
         1,
-        16,
+        15,
         null,
         null,
         1,
@@ -690,9 +676,9 @@
         19,
         null,
         19,
-        12,
-        7,
-        2,
+        13,
+        6,
+        1,
         null,
         5,
         null,
@@ -700,15 +686,15 @@
         null,
         null,
         1,
-        12,
-        12,
+        13,
+        13,
         null,
         10,
         10,
         null,
         1,
         null,
-        0,
+        1,
         null,
         1,
         null,
@@ -1114,7 +1100,7 @@
         1,
         36,
         null,
-        18,
+        19,
         null,
         null,
         null,
@@ -1733,10 +1719,6 @@
         null
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1515052590
-=======
-    "timestamp": 1515037919
->>>>>>> refactor
+    "timestamp": 1515071726
   }
 }

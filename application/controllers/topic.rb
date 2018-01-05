@@ -5,7 +5,7 @@ module WiKey
     route('topic') do |routing|
       routing.on String do |topic_name|
         topic_name = normalize(topic_name)
-        values = {:route => 'topic', :catalog => 'default'}
+        values = {:route => 'topic', :catalog => 'default', :percent => 50}
         routing.get do 
           find_result = FindDatabaseArticle.new.call(
             gateway: WiKey::Wiki::Api, 

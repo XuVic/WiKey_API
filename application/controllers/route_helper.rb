@@ -26,7 +26,7 @@ module WiKey
       case values[:route]
       when 'topic'
         entity.topic.rankup
-        Article.new(entity.topic, entity.catalogs, entity.summaries('Default'))
+        Article.new(entity.topic, entity.catalogs, entity.summaries('Default', values[:percent]))
       when 'topics'
         Topics.new(entity)
       when 'see_also'
@@ -34,7 +34,7 @@ module WiKey
       when 'paragraphs'
         Article.new(entity.topic, entity.catalogs, entity.select_from(values[:catalog]))
       when 'summaries'
-        Article.new(entity.topic, entity.catalogs, entity.summaries(values[:catalog]))
+        Article.new(entity.topic, entity.catalogs, entity.summaries(values[:catalog], values[:percent]))
       end
     end
     
