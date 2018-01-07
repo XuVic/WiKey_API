@@ -14,7 +14,7 @@ module WiKey
       def self.create(entity)
         Topic.create(entity.topic)
         Catalog.create(entity.catalogs)
-        #Paragraph.create(entity.paragraphs)
+        Paragraph.create(entity.paragraphs)
       end
       
       def self.rebuild_entity(db_record)

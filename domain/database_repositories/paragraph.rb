@@ -7,18 +7,18 @@ module WiKey
     class Paragraph
       
       def self.all
-        Database::ParagraphOrm.all.map {|db_paragraph| rebuild_entity(db_paragraph, nil)}
+        Database::ParagraphOrm.all.map {|db_paragraph| rebuild_entity(db_paragraph)}
       end
       
       def self.find_by_topic(topic_name)
         db_topic = Database::TopicOrm.first(name: topic_name)
-        Database::ParagraphOrm.where(topic_id: db_topic.id).all.map {|db_paragraph| rebuild_entity(db_paragraph, nil)}
+        Database::ParagraphOrm.where(topic_id: db_topic.id).all.map {|db_paragraph| rebuild_entity(db_paragraph)}
       end
       
       def self.find_by_topic_catalog(topic_name, catalog_name)
         db_topic = Database::TopicOrm.first(name: topic_name)
         db_catalog = Database::CatalogOrm.first(name: catalog_name)
-        Database::ParagraphOrm.where(topic_id: db_topic.id, catalog_id: db_catalog.id).all.map {|db_paragraph| rebuild_entity(db_paragraph, nil)}
+        Database::ParagraphOrm.where(topic_id: db_topic.id, catalog_id: db_catalog.id).all.map {|db_paragraph| rebuild_entity(db_paragraph)}
       end
       
       def self.create(entities)
