@@ -6,12 +6,12 @@ module WiKey
   class LoadMultipleFromWiki
     include Dry::Transaction
     
-    step :find_article
+    step :find_topic_in_db
     step :get_relative_topics
     step :topics_in_db?
-    step :call_work
+    step :send_msg_to_queue
     
-    def find_article(inputs)
+    def find_topic_in_db(inputs)
       article = Repository::Article.find(inputs[:topic_name])
       inputs[:article] = article
       if article.nil?
@@ -46,7 +46,7 @@ module WiKey
       end
     end
     
-    def call_work(inputs)
+    def send_msg_to_queue(inputs)
       record = {:id => inputs[:id], :topics => inputs[:topics].to_s}
       LoadParagraphsWorker.perform_async(record.to_json)
       Right(Result.new(:processing, {id: inputs[:id]}))

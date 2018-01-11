@@ -25,7 +25,7 @@ module WiKey
     end
     
     def store_article_in_repository(input)
-      store_data(input)
+      Repository::Article.create(input[:article])
       
       Right(Result.new(:created, input[:article]))
     rescue StandardError => e
@@ -39,7 +39,7 @@ module WiKey
     def store_data(input)
       Repository::Topic.create(input[:article][:topic])
       Repository::Catalog.create(input[:article][:catalogs])
-      #Repository::Paragraph.create(input[:article][:paragraphs])
+      Repository::Paragraph.create(input[:article][:paragraphs])
     end
     
   end
