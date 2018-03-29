@@ -9,7 +9,10 @@ The Web API for the WiKey Application
 
 Our API is rooted at /api/v0.1/ and has the following subroutes:
   * `GET topic/topic_name` - Get information of topic you choose in Database
-  * `POST topic/topic_name` - Store information of topic from other API into database
+ 
+  * `POST topic/topic_name` - Store information of topic from other API into database
+  
   * `GET topics` - Index of all topics stored
-  * `GET summaries_percent/topic_name/catalog_name/percentage` - Get summaried paragraph of topic with specific percentage.
+  
+  * `GET summaries_percent/topic_name/catalog_name/percentage` - Get summaried paragraph of topic with specific percentage.
  
